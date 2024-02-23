@@ -1,62 +1,44 @@
 <?php
-/**
- * metropolis functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package metropolis
- */
-
 if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
 }
 
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
+function metropolis_scripts() {
+	wp_enqueue_style( 'metropolis-style', get_stylesheet_uri(), array(), _S_VERSION );
+
+	wp_enqueue_style('metropolis-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all');
+
+	wp_deregister_script( 'jquery' ); //разрегистирируем скрипт jquery
+    wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js', array(), false, true);
+    wp_enqueue_script( 'jquery' );
+
+	
+	wp_enqueue_script( 'metropolis-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'metropolis-modal', get_template_directory_uri() . '/assets/js/modal.js', array(), _S_VERSION, true );
+	if ( is_page_template(['template-homepage.php']) ){
+	}
+	wp_enqueue_script( 'metropolis-function', get_template_directory_uri() . '/assets/js/function.js', array(), _S_VERSION, true );
+}
+add_action( 'wp_enqueue_scripts', 'metropolis_scripts' );
+
+
 function metropolis_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on metropolis, use a find and replace
-		* to change 'metropolis' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( 'metropolis', get_template_directory() . '/languages' );
-
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
-
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
 	add_theme_support( 'title-tag' );
 
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
+	
 	add_theme_support( 'post-thumbnails' );
+	// add_image_size( 'custom-lg', 900, 600, true);
+	// add_image_size( 'custom', 600, 400, true);
+	// add_image_size( 'custom-sm', 160, 105, true);
 
-	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'metropolis' ),
+			// 'header' => esc_html__( 'header', 'allwillas' ),
+			// 'footer' => esc_html__( 'footer', 'allwillas' ),
 		)
 	);
 
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
 	add_theme_support(
 		'html5',
 		array(
@@ -69,110 +51,178 @@ function metropolis_setup() {
 			'script',
 		)
 	);
-
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'metropolis_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
-
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
 }
 add_action( 'after_setup_theme', 'metropolis_setup' );
 
-/**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
 function metropolis_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'metropolis_content_width', 640 );
 }
 add_action( 'after_setup_theme', 'metropolis_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function metropolis_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'metropolis' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'metropolis' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+//Разрешаем загрузку WebP
+function webp_upload_mimes( $existing_mimes ) {
+    // add webp to the list of mime types
+    $existing_mimes['webp'] = 'image/webp';
+
+    // return the array back to the function with our added mime type
+    return $existing_mimes;
 }
-add_action( 'widgets_init', 'metropolis_widgets_init' );
+add_filter( 'mime_types', 'webp_upload_mimes' );
 
-/**
- * Enqueue scripts and styles.
- */
-function metropolis_scripts() {
-	wp_enqueue_style( 'metropolis-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'metropolis-style', 'rtl', 'replace' );
+## отключаем создание миниатюр файлов для указанных размеров
+// add_filter( 'intermediate_image_sizes', 'delete_intermediate_image_sizes' );  
+// function delete_intermediate_image_sizes( $sizes ){
+//     // размеры которые нужно удалить
+//     return array_diff( $sizes, [
+//         // 'thumbnail',
+//         'medium',
+//         'medium_large',
+//         'large',
+//         '1536x1536',
+//         '2048x2048',
+//     ] );
+// }
 
-	wp_enqueue_script( 'metropolis-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+//скрываем пункты меню в админ панели
+add_action('admin_menu', 'remove_menus');
+function remove_menus() {
+    //remove_menu_page('index.php');                # Консоль 
+    // remove_menu_page('edit.php');                 # Записи 
+    remove_menu_page('edit-comments.php');        # Комментарии 
+    //remove_menu_page('edit.php?post_type=page');  # Страницы 
+    //remove_menu_page('upload.php');               # Медиафайлы 
+    //remove_menu_page('themes.php');               # Внешний вид 
+    //remove_menu_page('plugins.php');              # Плагины 
+    // remove_menu_page('users.php');                # Пользователи 
+    // remove_menu_page('tools.php');                # Инструменты 
+    //remove_menu_page('options-general.php');      # Параметры 
+    // remove_menu_page('edit.php?post_type=acf-field-group'); # ACF smart-custom-fields
+}
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+function the_excerpt_max_charlength( $charlength ){
+	$excerpt = get_the_excerpt();
+	$charlength++;
+
+	if ( mb_strlen( $excerpt ) > $charlength ) {
+		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
+		$exwords = explode( ' ', $subex );
+		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+		if ( $excut < 0 ) {
+			echo mb_substr( $subex, 0, $excut );
+		} else {
+			echo $subex;
+		}
+		echo '...';
+	} else {
+		echo $excerpt;
 	}
 }
-add_action( 'wp_enqueue_scripts', 'metropolis_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
+// function formatSum($number){
+//     $number = number_format($number, 0, '', ' ');
+//     return $number;
+// }
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
+// function get_meta_values( $meta_key, $post_type = 'post' ) {
 
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
+//     $posts = get_posts(
+//         array(
+//             'post_type'      => $post_type,
+//             'meta_key'       => $meta_key,
+//             'posts_per_page' => - 1,
+//         )
+//     );
 
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
+//     $meta_values = array();
+//     foreach ( $posts as $post ) {
+//         $meta_values[] = get_post_meta( $post->ID, $meta_key, true );
+//     }
+//     $meta_values = array_diff($meta_values, array(''));
 
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+//     return array_unique( $meta_values );
+// }
+
+
+// function metropolis_widgets_init() {
+// 	register_sidebar(
+// 		array(
+// 			'name'          => esc_html__( 'Sidebar', 'metropolis' ),
+// 			'id'            => 'sidebar-1',
+// 			'description'   => esc_html__( 'Add widgets here.', 'metropolis' ),
+// 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+// 			'after_widget'  => '</section>',
+// 			'before_title'  => '<h2 class="widget-title">',
+// 			'after_title'   => '</h2>',
+// 		)
+// 	);
+// }
+// add_action( 'widgets_init', 'metropolis_widgets_init' );
+
+add_filter( 'get_the_archive_title', 'fixcode_archive_title' );
+	function fixcode_archive_title( $title ) {
+		if ( is_post_type_archive() ) {
+		$title = post_type_archive_title( '', false );
+	}
+	return $title;
 }
+
+
+/**
+ * Склонение существительных после числительных. https://snipp.ru/php/word-declination
+ * 
+ * @param string $value Значение
+ * @param array $words Массив вариантов, например: array('товар', 'товара', 'товаров')
+ * @param bool $show Включает значение $value в результирующею строку
+ * @return string
+ */
+function num_word($value, $words, $show = true) {
+	$num = $value % 100;
+	if ($num > 19) { 
+		$num = $num % 10; 
+	}
+	
+	$out = ($show) ?  $value . ' ' : '';
+	switch ($num) {
+		case 1:  $out .= $words[0]; break;
+		case 2: 
+		case 3: 
+		case 4:  $out .= $words[1]; break;
+		default: $out .= $words[2]; break;
+	}
+	
+	return $out;
+}
+
+
+
+
+// Отключаем принудительную проверку новых версий WP, плагинов и темы в админке,
+// require get_template_directory() . '/inc/disable-verification.php';
+// require get_template_directory() . '/inc/helpers.php';
+// require get_template_directory() . '/inc/acf-options.php';
+// require get_template_directory() . '/inc/breadcrumb.php';
+// require get_template_directory() . '/inc/post-type.php';
+// require get_template_directory() . '/inc/filter.php';
+// require get_template_directory() . '/inc/ajax-load-posts.php';
+
+
+
+/**
+ * SCF
+ */
+// require get_template_directory() . '/inc/scf/home.php';
+// require get_template_directory() . '/inc/scf/review.php';
+// require get_template_directory() . '/inc/scf/post.php';
+// require get_template_directory() . '/inc/scf/ourblog.php';
+// require get_template_directory() . '/inc/scf/admissions.php';
+// require get_template_directory() . '/inc/scf/about.php';
+
+/**
+ * SCF settings. my-theme-settings
+ */
+// add_action('init', function () {
+// 	SCF::add_options_page( 'Site management', 'Site management', 'manage_options', 'my-theme-settings','dashicons-welcome-widgets-menus', 150 );
+// });
+// require get_template_directory() . '/inc/scf/settings.php';
+
 
