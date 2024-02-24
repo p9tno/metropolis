@@ -2,25 +2,32 @@
     <div class="footer__content">
         <div class="container_center">
             <div class="footer__row">
-                <div class="footer__col"><a class="footer__logo img" href="/"><img src="/img/logo_f.png"
-                            alt="alt" /></a>
+                <div class="footer__col">
+
+                    <a class="footer__logo img" href="/">
+                        <img src="/img/logo_f.png"
+                            alt="alt" />
+                    </a>
+
                     <div class="footer__info desktop">
                         <script type="text/javascript">
                         document.write(new Date().getFullYear());
                         </script> | Metropolis Drafting and Construction. Lic. #930380
                     </div>
+
                 </div>
+
                 <div class="footer__col">
+
                     <nav class="footer__navbar">
-                        <ul class="menu">
-                            <li class="menu-item current-menu-item"><a href="#">homepage</a></li>
-                            <li class="menu-item"><a href="#">portfolio</a></li>
-                            <li class="menu-item"><a href="#">about</a></li>
-                            <li class="menu-item"><a href="#">testimonials</a></li>
-                            <li class="menu-item"><a href="#">services</a></li>
-                            <li class="menu-item"><a href="#">contact us</a></li>
-                        </ul>
+                        <?php 
+                            wp_nav_menu(array(
+                                'theme_location' => 'footer',
+                                'container' =>'ul',
+                            )); 
+                        ?>
                     </nav>
+
                 </div>
                 <div class="footer__col">
                     <div class="action">

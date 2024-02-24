@@ -39,9 +39,8 @@ function metropolis_setup() {
 
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'metropolis' ),
-			// 'header' => esc_html__( 'header', 'allwillas' ),
-			// 'footer' => esc_html__( 'footer', 'allwillas' ),
+			'header' => esc_html__( 'header', 'metropolis' ),
+			'footer' => esc_html__( 'footer', 'metropolis' ),
 		)
 	);
 

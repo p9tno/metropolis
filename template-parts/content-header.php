@@ -9,17 +9,19 @@
     </div>
 
     <div class="header__nav">
-        <div class="container_center"><a class="header__logo img desktop" href="/"><img src="/img/logo_h.png"
-                    alt="alt" /></a>
+        <div class="container_center">
+            <a class="header__logo img desktop" href="/">
+                <img src="/img/logo_h.png" alt="alt" /></a>
+
             <nav class="header__navbar">
-                <ul class="menu">
-                    <li class="menu-item current-menu-item"><a href="#">HOME</a></li>
-                    <li class="menu-item"><a href="#">about us</a></li>
-                    <li class="menu-item"><a href="#">portfolio</a></li>
-                    <li class="menu-item"><a href="#">testimonials</a></li>
-                    <li class="menu-item"><a href="#">Contact Us</a></li>
-                </ul>
+                <?php 
+                    wp_nav_menu(array(
+                        'theme_location' => 'header',
+                        'container' =>'ul',
+                    )); 
+                ?>
             </nav>
+
         </div>
     </div>
 
