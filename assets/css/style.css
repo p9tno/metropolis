@@ -1,11 +1,6 @@
 @charset "UTF-8";
 /* Global variables */
 /* ======================================================================== */
-/* Grid */
-/* ======================================================================== */
-/* 20/16 */
-/* Form */
-/* ======================================================================== */
 @import "../fonts/icon/style.css";
 @font-face {
   font-family: "Archivo";
@@ -3665,54 +3660,6 @@ input[type=number] {
     background-color: #292929;
     color: #ffffff;
   }
-}
-
-.tabs {
-  display: flex;
-}
-@media (max-width: 767px) {
-  .tabs {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 0.75em;
-    margin-left: -1.25em;
-    margin-right: -1.25em;
-  }
-}
-@media (min-width: 768px) {
-  .tabs {
-    margin-bottom: 4.375em;
-  }
-}
-
-.tab {
-  position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  flex: none;
-  margin-right: 2em;
-  cursor: pointer;
-}
-.tab:first-child {
-  margin-left: 1em;
-}
-.tab:last-child {
-  margin-right: 2em;
-}
-@media (min-width: 768px) {
-  .tab {
-    margin-right: 6.5em;
-  }
-  .tab:first-child {
-    margin-left: 0;
-  }
-}
-.tab.active {
-  color: red;
-}
-.tab:hover {
-  color: red;
 }
 
 .modal {

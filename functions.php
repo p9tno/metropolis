@@ -5,18 +5,24 @@ if ( ! defined( '_S_VERSION' ) ) {
 
 function metropolis_scripts() {
 	wp_enqueue_style( 'metropolis-style', get_stylesheet_uri(), array(), _S_VERSION );
-
+	wp_enqueue_style('metropolis-swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', array(), _S_VERSION, 'all');
 	wp_enqueue_style('metropolis-main-style', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all');
 
 	wp_deregister_script( 'jquery' ); //разрегистирируем скрипт jquery
     wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js', array(), false, true);
     wp_enqueue_script( 'jquery' );
 
-	
-	wp_enqueue_script( 'metropolis-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'metropolis-modal', get_template_directory_uri() . '/assets/js/modal.js', array(), _S_VERSION, true );
 	if ( is_page_template(['template-homepage.php']) ){
 	}
+	
+	wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'metropolis-project', get_template_directory_uri() . '/assets/js/project.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'metropolis-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'metropolis-modal', get_template_directory_uri() . '/assets/js/modal.js', array(), _S_VERSION, true );
+
+
+
 	wp_enqueue_script( 'metropolis-function', get_template_directory_uri() . '/assets/js/function.js', array(), _S_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'metropolis_scripts' );
