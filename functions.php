@@ -225,9 +225,9 @@ function num_word($value, $words, $show = true) {
 /**
  * SCF settings. my-theme-settings
  */
-// add_action('init', function () {
-// 	SCF::add_options_page( 'Site management', 'Site management', 'manage_options', 'my-theme-settings','dashicons-welcome-widgets-menus', 150 );
-// });
-// require get_template_directory() . '/inc/scf/settings.php';
+add_action('init', function () {
+	SCF::add_options_page( 'Site management', 'Site management', 'manage_options', 'my-theme-settings','dashicons-welcome-widgets-menus', 150 );
+});
+require get_template_directory() . '/inc/scf/settings.php';
 
 

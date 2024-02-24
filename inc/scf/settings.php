@@ -14,63 +14,93 @@ function global_theme_settings($settings, $type, $id, $meta_type, $types)
 			false,
 			array(
 				array(
-					'name'        => 'option__header__img',
-					'label'       => 'Logo header',
-					'type'        => 'image',
-					'size'        => 'medium',
-				),
-				array(
-					'name'        => 'option__header__label',
-					'label'       => 'Label site in header',
-					'type'        => 'text',
-					'notes'       => 'use the <br> tag to wrap text on a new line',
-				),
-				array(
-					'name'        => 'option__phone',
-					'label'       => 'Phone',
-					'type'        => 'text',
-				),
-				array(
-					'name'        => 'option__policy',
-					'label'       => 'Privacy Policy link',
-					'type'        => 'text',
+					'type'        => 'image', // Тип поля. Обязательный.
+					'name'        => 'option_header_img', // Ключ поля. Обязательный.
+					'label'       => 'Logo header', // Заголовок поля.
+					'size'        => 'medium', // Размер изображения в метабоксе.
 				),
 				array(
 					'type'        => 'image', // Тип поля. Обязательный.
-					'name'        => 'option__logo__footer', // Ключ поля. Обязательный.
+					'name'        => 'option_footer_img', // Ключ поля. Обязательный.
 					'label'       => 'Logo footer', // Заголовок поля.
-					'size'        => 'full', // Размер изображения в метабоксе.
-					'instruction' => '', // Текст над полем.
-					'notes'       => '', // Текст под полем.
+					'size'        => 'medium', // Размер изображения в метабоксе.
 				),
 				array(
-					'name'        => 'option__address',
-					'label'       => 'Address',
-					'type'        => 'text',
-				),
-				array(
-					'name'        => 'option__email',
-					'label'       => 'Email',
-					'type'        => 'text',
-				),
-				array(
-					'name'        => 'option__footer__btn',
-					'label'       => 'Get Directions btn link',
-					'type'        => 'text',
-				),
-				array(
-					'type'        => 'wysiwyg', // Тип поля. Обязательный.
-					'name'        => 'option__developed', // Ключ поля. Обязательный.
-					'label'       => 'Developed', // Заголовок поля.
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'footer_info', // Ключ поля. Обязательный.
+					'label'       => 'Footer text', // Заголовок поля.
 					'default'     => '', // Значение по умолчанию.
 					'instruction' => '', // Текст над полем.
 					'notes'       => '', // Текст под полем.
 				),
 				array(
+					'name'        => 'option_phone',
+					'label'       => 'Phone',
+					'type'        => 'text',
+				),
+				array(
+					'name'        => 'option_address',
+					'label'       => 'Address',
+					'type'        => 'text',
+				),
+				array(
+					'name'        => 'option_email',
+					'label'       => 'Email',
+					'type'        => 'text',
+				),
+				array(
 					'type'        => 'image', // Тип поля. Обязательный.
-					'name'        => 'option__no_img', // Ключ поля. Обязательный.
+					'name'        => 'option_no_img', // Ключ поля. Обязательный.
 					'label'       => 'No img', // Заголовок поля.
 					'size'        => 'medium', // Размер изображения в метабоксе.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'facebook', // Ключ поля. Обязательный.
+					'label'       => 'facebook', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'twitter', // Ключ поля. Обязательный.
+					'label'       => 'twitter', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'yelp', // Ключ поля. Обязательный.
+					'label'       => 'yelp', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'instagram', // Ключ поля. Обязательный.
+					'label'       => 'instagram', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'developed_label', // Ключ поля. Обязательный.
+					'label'       => 'developed label', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'developed_link', // Ключ поля. Обязательный.
+					'label'       => 'developed link', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
 					'instruction' => '', // Текст над полем.
 					'notes'       => '', // Текст под полем.
 				),
