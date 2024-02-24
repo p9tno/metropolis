@@ -15,7 +15,7 @@ function metropolis_scripts() {
 	if ( is_page_template(['template-homepage.php']) ){
 	}
 	
-	wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
+	// wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'metropolis-project', get_template_directory_uri() . '/assets/js/project.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'metropolis-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), _S_VERSION, true );
@@ -92,7 +92,7 @@ add_filter( 'mime_types', 'webp_upload_mimes' );
 add_action('admin_menu', 'remove_menus');
 function remove_menus() {
     //remove_menu_page('index.php');                # Консоль 
-    // remove_menu_page('edit.php');                 # Записи 
+    remove_menu_page('edit.php');                 # Записи 
     remove_menu_page('edit-comments.php');        # Комментарии 
     //remove_menu_page('edit.php?post_type=page');  # Страницы 
     //remove_menu_page('upload.php');               # Медиафайлы 
@@ -101,7 +101,7 @@ function remove_menus() {
     // remove_menu_page('users.php');                # Пользователи 
     // remove_menu_page('tools.php');                # Инструменты 
     //remove_menu_page('options-general.php');      # Параметры 
-    // remove_menu_page('edit.php?post_type=acf-field-group'); # ACF smart-custom-fields
+    remove_menu_page('edit.php?post_type=smart-custom-fields'); # smart-custom-fields
 }
 
 function the_excerpt_max_charlength( $charlength ){
@@ -202,10 +202,9 @@ function num_word($value, $words, $show = true) {
 
 
 // Отключаем принудительную проверку новых версий WP, плагинов и темы в админке,
-// require get_template_directory() . '/inc/disable-verification.php';
-// require get_template_directory() . '/inc/helpers.php';
-// require get_template_directory() . '/inc/acf-options.php';
-// require get_template_directory() . '/inc/breadcrumb.php';
+require get_template_directory() . '/inc/disable-verification.php';
+require get_template_directory() . '/inc/helpers.php';
+require get_template_directory() . '/inc/breadcrumb.php';
 // require get_template_directory() . '/inc/post-type.php';
 // require get_template_directory() . '/inc/filter.php';
 // require get_template_directory() . '/inc/ajax-load-posts.php';
@@ -215,7 +214,7 @@ function num_word($value, $words, $show = true) {
 /**
  * SCF
  */
-// require get_template_directory() . '/inc/scf/home.php';
+require get_template_directory() . '/inc/scf/home.php';
 // require get_template_directory() . '/inc/scf/review.php';
 // require get_template_directory() . '/inc/scf/post.php';
 // require get_template_directory() . '/inc/scf/ourblog.php';

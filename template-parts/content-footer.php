@@ -65,8 +65,6 @@
         </div>
     </div>
 
-    <?php if (SCF::get_option_meta('my-theme-settings', 'developed_link') && SCF::get_option_meta('my-theme-settings', 'developed_label')) { ?>
-        <div class="footer__developed desktop"><a href="<?php echo SCF::get_option_meta('my-theme-settings', 'developed_link'); ?>" target="_blank"><?php echo SCF::get_option_meta('my-theme-settings', 'developed_label'); ?></a></div>
-    <?php } ?>
+    <div class="footer__developed desktop"><a href="https://deessemedia.com/" target="_blank">created by deesse media</a></div>
 
 </footer>

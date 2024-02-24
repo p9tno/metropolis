@@ -88,22 +88,6 @@ function global_theme_settings($settings, $type, $id, $meta_type, $types)
 					'instruction' => '', // Текст над полем.
 					'notes'       => '', // Текст под полем.
 				),
-				array(
-					'type'        => 'text', // Тип поля. Обязательный.
-					'name'        => 'developed_label', // Ключ поля. Обязательный.
-					'label'       => 'developed label', // Заголовок поля.
-					'default'     => '', // Значение по умолчанию.
-					'instruction' => '', // Текст над полем.
-					'notes'       => '', // Текст под полем.
-				),
-				array(
-					'type'        => 'text', // Тип поля. Обязательный.
-					'name'        => 'developed_link', // Ключ поля. Обязательный.
-					'label'       => 'developed link', // Заголовок поля.
-					'default'     => '', // Значение по умолчанию.
-					'instruction' => '', // Текст над полем.
-					'notes'       => '', // Текст под полем.
-				),
 			)
 		);
 
