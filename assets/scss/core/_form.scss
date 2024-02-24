@@ -1,0 +1,130 @@
+.form {
+	&_grid {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -1em;
+
+		.form__row {
+			margin: 0 1em 1.25em;
+			width: 100%;
+
+			@media (min-width: 768px) {
+				margin: 0 1em 1.5em;
+
+			}
+
+			@media (min-width: 768px) {
+				width: calc(50% - 2em);
+			}
+
+			&_full {
+				width: 100%;
+			}
+		}
+	}
+
+	&__row {
+		.btn,
+		input:not([type]),
+		input[type=date],
+		input[type=email],
+		input[type=number],
+		input[type=password],
+		input[type=search],
+		input[type=tel],
+		input[type=text],
+		input[type=url],
+		textarea {
+			width: 100%;
+		}
+
+		textarea {
+			min-height: 7.4em;
+			resize: vertical;
+		}
+
+		.btn {
+			margin-top: 0.8em;
+		}
+
+		&.tick {
+			position: relative;
+
+			&:after {
+				position: absolute;
+				bottom: 0.178em;
+				right: -0.4em;
+				content: '';
+				display: block;
+				width: 0.5em;
+				height: 1px;
+
+				background-color: #948D7C;
+				transform: rotate(-45deg);
+			}
+		}
+
+	}
+
+}
+// Input text and textarea ================================================
+input:not([type]),
+input[type=date],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+textarea {
+
+	background-color: transparent;
+	border: 0;
+
+	border-bottom: 1px solid;
+	border-color: #948D7C;
+	border-radius: 0;
+
+	font-family: $main_font_family;
+	color: $second_color;
+
+	padding: 0.6em 0;
+	outline: none;
+	font-weight: 300;
+	transition: 0.3s;
+
+	font-size: 0.875em;
+
+	@media (min-width: 768px) {
+		font-size: 1em;
+	}
+
+	&:hover {}
+
+	&:focus {}
+
+	&.invalid {}
+
+	// Placeholder for input +++++++++++++++
+	@include placeholder {
+		color: #524D43;
+	}
+}
+
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
+	appearance: none;
+}
+
+/* Для Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	height: auto;
+	appearance: none;
+	margin: 0;
+}
+/* Для Firefox */
+input[type=number] {
+	appearance: textfield;
+}

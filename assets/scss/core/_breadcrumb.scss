@@ -1,0 +1,34 @@
+.breadcrumbs {
+	padding-top: 6.25em;
+	padding-bottom: 0.875em;
+	@media (min-width: 768px) {
+		padding-top: 8.375em;
+	}
+
+	.kama_breadcrumbs {
+		font-weight: 300;
+		line-height: 1.5;
+		font-size: 1em;
+
+		a {
+			text-decoration: none;
+			color: #C3B9A7;
+		}
+
+		.kb_sep {
+			display: inline-block;
+			color: #C3B9A7;
+
+			margin: 0 0.3em;
+		}
+
+		> span {
+			&.kb_title {
+				color: #514B42;
+			}
+
+		}
+
+	}
+
+}

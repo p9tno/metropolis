@@ -1,0 +1,166 @@
+/* Footer
+ ----------------------------------------------------------------------------- */
+.footer {
+	&__content {
+		background-color: $second_color;
+		color: $color_light_primary;
+
+		padding: 2.5em 0 1.875em;
+
+		@media (min-width: 768px) {
+			padding: 6.25em 0;
+
+		}
+	}
+
+	&__row {
+		padding-bottom: 2.5em;
+
+		@media (min-width: 768px) {
+			display: flex;
+			justify-content: space-between;
+			padding-bottom: 3.75em;
+
+		}
+
+	}
+
+	&__col {
+		margin-top: 2.5em;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		@media (min-width: 768px) {
+			margin-top: 0;
+			width: 33.3%;
+		}
+
+	}
+
+	&__logo {
+		display: block;
+		text-decoration: none;
+		width: 17.5em;
+		@media (min-width: 768px) {
+			width: 21.5625em;
+
+		}
+	}
+
+	&__info {
+		font-weight: 300;
+		line-height: 1.5;
+		@media (min-width: 768px) {
+			margin-top: 3.75em;
+			width: 20em;
+		}
+	}
+
+	&__navbar {
+		@media (min-width: 768px) {
+			display: flex;
+			justify-content: center;
+		}
+
+		.menu {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-column-gap: 0.7em;
+			grid-row-gap: 0.7em;
+
+			@media (min-width: 768px) {
+				grid-column-gap: 8.325em;
+				grid-row-gap: 2.3em;
+			}
+		}
+
+		.menu-item {
+			a {
+				font-size: 0.875em;
+				font-weight: 500;
+				color: $color_light_primary;
+				text-transform: uppercase;
+				text-decoration: none;
+			}
+		}
+	}
+
+	&__to {
+		margin-top: 1.25em;
+		text-align: center;
+
+		a {
+			color: $color_light_primary;
+			text-decoration: none;
+			line-height: 1.5;
+		}
+	}
+
+	&__developed {
+		@media (min-width: 768px) {
+			text-align: center;
+			padding: 1em 0;
+
+			a {
+				color: $second_color;
+				font-size: 1.25em;
+				font-weight: 600;
+				line-height: 1.4;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.action {
+		@media (min-width: 768px) {
+			width: fit-content;
+			margin-left: auto;
+		}
+
+		&__label {
+			font-size: 0.875em;
+			font-weight: 500;
+			text-transform: uppercase;
+		}
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.6em;
+			@media (min-width: 768px) {
+				margin-top: 1em;
+			}
+		}
+
+		&__item {
+			display: flex;
+			align-items: center;
+			gap: 0.325em;
+
+			font-size: 1em;
+			font-weight: 300;
+			color: $color_light_primary;
+			text-decoration: none;
+
+			margin-top: 0.4em;
+
+			@media (min-width: 768px) {
+				gap: 0.625em;
+				margin-top: 1em;
+
+			}
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+	}
+
+}
