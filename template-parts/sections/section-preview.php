@@ -1,7 +1,5 @@
 <?php
     $no_img = wp_get_attachment_image(SCF::get_option_meta( 'my-theme-settings', 'option_no_img' ), 'full');
-
-    // echo $no_img;
 ?>
 
 <!-- begin preview-->
