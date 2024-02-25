@@ -13,9 +13,9 @@ function metropolis_scripts() {
     wp_enqueue_script( 'jquery' );
 
 	if ( is_page_template(['template-homepage.php']) ){
+		wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
 	}
 	
-	// wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'metropolis-project', get_template_directory_uri() . '/assets/js/project.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'metropolis-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), _S_VERSION, true );
@@ -104,24 +104,24 @@ function remove_menus() {
     remove_menu_page('edit.php?post_type=smart-custom-fields'); # smart-custom-fields
 }
 
-function the_excerpt_max_charlength( $charlength ){
-	$excerpt = get_the_excerpt();
-	$charlength++;
+// function the_excerpt_max_charlength( $charlength ){
+// 	$excerpt = get_the_excerpt();
+// 	$charlength++;
 
-	if ( mb_strlen( $excerpt ) > $charlength ) {
-		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
-		$exwords = explode( ' ', $subex );
-		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
-		if ( $excut < 0 ) {
-			echo mb_substr( $subex, 0, $excut );
-		} else {
-			echo $subex;
-		}
-		echo '...';
-	} else {
-		echo $excerpt;
-	}
-}
+// 	if ( mb_strlen( $excerpt ) > $charlength ) {
+// 		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
+// 		$exwords = explode( ' ', $subex );
+// 		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+// 		if ( $excut < 0 ) {
+// 			echo mb_substr( $subex, 0, $excut );
+// 		} else {
+// 			echo $subex;
+// 		}
+// 		echo '...';
+// 	} else {
+// 		echo $excerpt;
+// 	}
+// }
 
 // function formatSum($number){
 //     $number = number_format($number, 0, '', ' ');
@@ -201,11 +201,19 @@ function num_word($value, $words, $show = true) {
 
 
 
+// Notice: ob_end_flush(): Failed to send buffer of zlib output compression (0) in /home/deesseucp/public_html/newbeginnings.deessemedia.com/wp-includes/functions.php on line 5373
+remove_action('shutdown', 'wp_ob_end_flush_all', 1);
+
+
+
+
+
+
 // Отключаем принудительную проверку новых версий WP, плагинов и темы в админке,
 require get_template_directory() . '/inc/disable-verification.php';
 require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/breadcrumb.php';
-// require get_template_directory() . '/inc/post-type.php';
+require get_template_directory() . '/inc/post-type.php';
 // require get_template_directory() . '/inc/filter.php';
 // require get_template_directory() . '/inc/ajax-load-posts.php';
 
@@ -215,7 +223,7 @@ require get_template_directory() . '/inc/breadcrumb.php';
  * SCF
  */
 require get_template_directory() . '/inc/scf/home.php';
-// require get_template_directory() . '/inc/scf/review.php';
+require get_template_directory() . '/inc/scf/project.php';
 // require get_template_directory() . '/inc/scf/post.php';
 // require get_template_directory() . '/inc/scf/ourblog.php';
 // require get_template_directory() . '/inc/scf/admissions.php';

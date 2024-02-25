@@ -78,6 +78,39 @@ function home_page_fields($settings, $type, $id, $meta_type, $types)
 		$settings[] = $Section;
 	}
 
+    if (HOME_ID == $id && $type === 'page') {
+
+		$Section = SCF::add_setting('asf_homepage_map', 'Map section');
+
+		$Section->add_group(
+			'map-section',
+			false,
+			array(
+                array(
+                    'type'        => 'text', // Тип поля. Обязательный.
+                    'name'        => 'map__title', // Ключ поля. Обязательный.
+                    'label'       => 'Title', // Заголовок поля.
+                    'default'     => '', // Значение по умолчанию.
+                    'instruction' => 'Add a span tag for a line', // Текст над полем.
+                    'notes'       => 'text <span></span>text', // Текст под полем.
+                ),
+                // array(
+                //     'type'        => 'relation', // Тип поля. Обязательный.
+                //     'name'        => 'map__relation', // Ключ поля. Обязательный.
+                //     'label'       => 'Select projects', // Заголовок поля.
+                //     'post-type'   => array('project'), // Типы записей.
+                //     'limit'       => 0, // Максимальное количество выбираемых элементов.
+                //     'instruction' => '', // Текст над полем.
+                //     'notes'       => '', // Текст под полем.
+                // ),
+        
+			)
+		);
+
+
+		$settings[] = $Section;
+	}
+
 	return $settings;
 }
 add_filter('smart-cf-register-fields', 'home_page_fields', 1, 5);
