@@ -21,3 +21,4 @@
 
 		<!-- start main -->
 		<main class="main_content">
+			<?php get_template_part( 'template-parts/parts/part', 'breadcrumbs' ); ?>

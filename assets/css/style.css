@@ -1743,13 +1743,14 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 1.25em;
     grid-row-gap: 3.75em;
-    grid-auto-rows: minmax(37.5em, auto);
+    grid-auto-rows: 37.5em;
   }
 }
 .portfolio__item {
   display: block;
   cursor: pointer;
   text-decoration: none;
+  overflow: hidden;
   margin-top: 2.5em;
 }
 .portfolio__item:first-child {
