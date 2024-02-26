@@ -94,6 +94,18 @@ function project_fields($settings, $type, $id, $meta_type, $types)
                     'instruction' => '', // Текст над полем.
                     'notes'       => '', // Текст под полем.
                 ),  
+                array(
+                    'type'            => 'radio', // Тип поля. Обязательный.
+                    'name'            => 'gallery_radio', // Ключ поля. Обязательный.
+                    'label'           => 'Before, after', // Заголовок поля.
+                    'choices'         => array( // Массив с вариантами выбора.
+                        'no' => 'no',
+                        'before' => 'before',
+                        'after' => 'after',
+                    ),
+                    'radio_direction' => 'horizontal', // или vertical. Вариант отображения пунктов.
+                    'default'         => 'no', // Значение по умолчанию.
+                ),
 			)
 		);
 

@@ -7,7 +7,7 @@
         <?php echo my_cat_list_filter(
             $post_type = 'project',
             $taxonomy = 'project-cat',
-            $posts_per_page = '5',
+            $posts_per_page = '1',
         ); ?>
 
         <div class="preloaderFilter__inner">
@@ -20,7 +20,7 @@
                 <?php
                     $args = array(
                         'post_type' => 'project',
-                        'posts_per_page' => 5,
+                        'posts_per_page' => 1,
                         'orderby' => 'menu_order',
                         'order' => 'ASC',
                     );
@@ -28,7 +28,7 @@
                 ?>
     
                 <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
-                    <?php get_template_part( 'template-parts/previews/preview', 'portfolio' );?>
+                    <?php get_template_part( 'template-parts/previews/preview', 'portfolio' ); ?>
                 <?php endwhile; ?>
     
                 <?php else : ?>
@@ -42,10 +42,7 @@
             </div>
 
         </div>
-
-
-        <!-- <div class="section__more"><a href="#"> <span>see more Projects</span><i>(16)</i></a></div> -->
-        
+ 
     </div>
 </section>
 <!-- end portfolio-->

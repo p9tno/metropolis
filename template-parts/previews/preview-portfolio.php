@@ -28,13 +28,79 @@ if (isset($meta_thumb[2])) {
     $img_3 = $no_img;
 }
 
+
+$meta_gallery = get_post_meta( get_the_ID(), 'project__gallery', true );
+if ($meta_gallery) {
+    get_pr($meta_gallery);
+    
+    // foreach ($meta_gallery as $img_id) { 
+    //     $img_url = wp_get_attachment_url($img_id);  
+    //     echo $img_url . ',<br>';  
+    // } 
+
+}
+
+// $data_gallery = SCF::get('project__gallery');
+// if ($data_gallery) { 
+
+
+//     echo '([';
+//         foreach ($data_gallery as $item) {  
+//             $img_url = wp_get_attachment_url($item['gallery_item']);
+//             $attribute = $item['gallery_radio']; 
+//             echo "['" . $attribute . "', '"  . $img_url . "'],";
+//         } 
+//     echo '])';
+//  }; 
+
+
+
+
+
+
+
 ?>
 
+<!-- 
+        ([
+            ['', '../../img/preview_1.webp'],
+            ['before', '../../img/preview_2.webp'],
+            ['after', '../../img/preview_3.webp'],
+        ]), -->
 
 
 
 
-<div class="portfolio__item" href="#project1" id="<?php the_ID(); ?>">
+
+<div 
+    class="portfolio__item" 
+    data-modal="#project" 
+    data-title="<?php the_title(); ?>" 
+    data-cat="<?php $category = get_the_terms($post->ID, 'project-cat');
+            if ($category) { $i = '';
+                foreach ($category as $cat) {
+                    echo $i . $cat->name;
+                    $i = ', ';
+                }
+            } else {echo '';}
+        ?>" 
+    data-location="<?php echo (SCF::get( 'project__location' )) ? SCF::get( 'project__location' ) : ''; ?>" 
+    data-text="<?php echo the_content(); ?>" 
+    data-link="<?php echo (SCF::get( 'project__link' )) ? SCF::get( 'project__link' ) : ''; ?>" 
+    data-images="<?php $data_gallery = SCF::get('project__gallery');
+        if ($data_gallery) { 
+
+
+            echo '[';
+                foreach ($data_gallery as $item) {  
+                    $img_url = wp_get_attachment_url($item['gallery_item']);
+                    $attribute = $item['gallery_radio']; 
+                    echo "['" . $attribute . "', '"  . $img_url . "'],";
+                } 
+            echo ']';
+        }; ?>" 
+    id="<?php the_ID(); ?>"
+    >
     <div class="portfolio__content">
         <?php if (SCF::get( 'project__location' )) { ?>
             <div class="portfolio__locatin"><?php echo SCF::get( 'project__location' ); ?></div>
