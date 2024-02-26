@@ -88,7 +88,7 @@ $(document).ready(function() {
             $('body,html').animate({scrollTop: top}, 1500);
         });
     };
-    // scroolTo();
+    scroolTo();
 
     function showModal() {
         $('.show_modal_js').on('click', function (e) {

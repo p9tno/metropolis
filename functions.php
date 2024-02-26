@@ -15,8 +15,12 @@ function metropolis_scripts() {
 	if ( is_page_template(['template-homepage.php']) ){
 		wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
 	}
+
+	if ( is_page_template(['template-portfolio.php']) ){
+		wp_enqueue_script( 'metropolis-filter', get_template_directory_uri() . '/assets/js/filter.js', array(), _S_VERSION, true );
+		// wp_enqueue_script( 'metropolis-project', get_template_directory_uri() . '/assets/js/project.js', array(), _S_VERSION, true );
+	}
 	
-	wp_enqueue_script( 'metropolis-project', get_template_directory_uri() . '/assets/js/project.js', array(), _S_VERSION, true );
 
 	wp_enqueue_script( 'metropolis-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'metropolis-modal', get_template_directory_uri() . '/assets/js/modal.js', array(), _S_VERSION, true );
@@ -198,6 +202,85 @@ function num_word($value, $words, $show = true) {
 	return $out;
 }
 
+function my_paginate ($query) {
+	if ($query->max_num_pages > 1) {
+		echo '<nav class="pagination">';
+			$big = 999999999; // need an unlikely integer
+			$paged = (isset($query_data['paged']) ) ? intval($query_data['paged']) : 1;
+			echo paginate_links( array(
+				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format' => '?paged=%#%',
+				'current' => max( 1, $paged ),
+				'prev_text' => '<i class="icon_long_arrow_left"></i>',
+				'next_text' => '<i class="icon_long_arrow_right"></i>',
+				'total' => $query->max_num_pages,
+				'end_size' => 1,
+				'mid_size' => 1
+			) );
+		echo '</nav>';
+	}
+}
+
+function my_cat_list_filter ( $post_type = 'post' , $taxonomy = '', $posts_per_page = '1') { ?>
+	<?php $count = wp_count_posts( $post_type ); // get_pr($count);?>
+
+	<div class="portfolio__category filter filter-list-js">
+
+		<div class="category">
+			<div class="category__head">
+				<div class="category__label"><span>Project category:</span></div>
+				<div class="category__toggle"></div>
+
+				<div class="category__item filter-cat-js">
+					<input 
+						type="radio" 
+						name="cat_name" 
+						id="term_all" 
+						checked="checked" 
+						value="all"  
+						data-taxonomy=<?php echo $taxonomy; ?>
+						data-post-type=<?php echo $post_type; ?>
+						data-posts_per_page = <?php echo $posts_per_page; ?>
+						/>
+					<label for="term_all"><span>All</span><i><?php echo $count->publish; ?></i></label>
+				</div>
+			</div>
+
+			<div class="category__list">
+				<?php
+				$categories = get_terms(
+					$taxonomy,
+					array (
+						// 'meta_key'                 => 'video_lab_number',
+						// 'orderby'                  => 'meta_value_num',
+						// 'order'                    => 'ASC',
+						'hierarchical' => true,
+						'hide_empty' => 1,
+						'parent' => 0
+					) 
+				);
+				foreach($categories as $cat) { // get_pr($cat); ?>   
+					<div class="category__item filter-cat-js">
+						<input 
+							type="radio" 
+							name="cat_name"
+							id="term_<?php echo $cat->term_id; ?>" 
+							value="<?php echo $cat->term_id; ?>" 
+							data-taxonomy=<?php echo $taxonomy; ?> 
+							data-post-type=<?php echo $post_type; ?>
+							data-posts_per_page = <?php echo $posts_per_page; ?>
+							/>
+						<label for="term_<?php echo $cat->term_id; ?>"><span><?php echo $cat->name; ?></span><i><?php echo $cat->count; ?></i></label>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+
+	</div>
+
+	<?php
+}
+
 
 
 
@@ -224,7 +307,7 @@ require get_template_directory() . '/inc/post-type.php';
  */
 require get_template_directory() . '/inc/scf/home.php';
 require get_template_directory() . '/inc/scf/project.php';
-// require get_template_directory() . '/inc/scf/post.php';
+require get_template_directory() . '/inc/filter.php';
 // require get_template_directory() . '/inc/scf/ourblog.php';
 // require get_template_directory() . '/inc/scf/admissions.php';
 // require get_template_directory() . '/inc/scf/about.php';

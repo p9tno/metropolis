@@ -46,7 +46,7 @@ function custom_register_post_type() {
 		'query_var'         => true,
 		// 'rewrite'           => array( 'slug' => 'project-cat' ),
 		'rewrite'           => true,
-		'show_in_rest'      => true,
+		// 'show_in_rest'      => true,
 		
 	);
 
