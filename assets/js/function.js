@@ -269,7 +269,10 @@ $(document).ready(function() {
             slidesPerView: 1,
             allowTouchMove: false,
             clickable: false,
-            // loop: true,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+              },
             speed: speed,
         });
 
@@ -277,8 +280,11 @@ $(document).ready(function() {
             slidesPerView: 1,
             allowTouchMove: false,
             clickable: false,
-            // loop: true,
+            loop: true,
             speed: speed,
+            autoplay: {
+                delay: 5000,
+              },
             thumbs: {
                 swiper: lg,
             },
@@ -288,7 +294,7 @@ $(document).ready(function() {
             slidesPerView: 1,
             allowTouchMove: false,
             clickable: false,
-            // loop: true,
+            loop: true,
             speed: speed,
 
             autoplay: {

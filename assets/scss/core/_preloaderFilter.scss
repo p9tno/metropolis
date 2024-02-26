@@ -1,14 +1,17 @@
 .preloaderFilter {
     &__inner {
         position: relative;
+        // margin: 0 -1.25em;
+
     }
 
     &__wrap {
         position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
+        left: -2.5em;
+        width: calc(100% + 5em);
         height: 100%;
+
         background-color: rgba($color_light_primary, 1);
         z-index: 20;
         transition: 0.3s;

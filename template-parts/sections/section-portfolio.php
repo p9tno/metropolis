@@ -1,16 +1,14 @@
 <!-- begin portfolio-->
 <section class="portfolio section" id="portfolio">
     <div class="container_center">
-        <div class="portfolio__header">
-            <h1 class="section__title"><?php the_title(); ?></h1>
+     
+        <h1 class="section__title"><?php the_title(); ?></h1>
 
-            <?php echo my_cat_list_filter(
-                $post_type = 'project',
-                $taxonomy = 'project-cat',
-                $posts_per_page = '5',
-            ); ?>
-
-        </div>
+        <?php echo my_cat_list_filter(
+            $post_type = 'project',
+            $taxonomy = 'project-cat',
+            $posts_per_page = '5',
+        ); ?>
 
         <div class="preloaderFilter__inner">
             <div class="preloaderFilter__wrap preloaderFilter-js">

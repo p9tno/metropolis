@@ -1,44 +1,36 @@
 .pagination {
+    margin-top: 1.25em;
+    @media (min-width: 768px) {
+      margin-top: 0;
+    }
+    padding-top: 1.25em;
+    border-top: 0.0625em solid #948D7C;
 
     position: relative;
     z-index: 100;
 
     display: flex;
-    // justify-content: center;
     align-items: center;
-
-    font-size: 0.5em;
+    gap: 0.375em;
 
     @media (min-width: 768px) {
-        font-size: 1em;
-
-        grid-column-start: 1;
-        grid-column-end: 4;
-        height: 2.5em;
-          
-        
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
     }
 
     > * {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: 2em;
-        height: 2em;
-        // border-radius: 0.25em;
-
-        color: $main_color;
+        color: #938B7C;
         background-color: transparent;
         text-decoration: none;
-
-        margin: 0 0.125em;
-        font-weight: 700;
+        font-weight: 500;
 
         cursor: pointer;
         transition: 0.3s;
+        line-height: 1.5;
 
-        font-size: 1.25em;
+        font-size: 0.875em;
 
         &.dots {
             border: 0;
@@ -46,20 +38,8 @@
 
         &.next,
         &.prev {
-            // border: 0;
-            // background-color: transparent;
-            // color: #23272D;
-            // font-size: 0.5em;
             display: none;
         }
-
-        // &.next {
-        //     margin-left: 3em;
-        // }
-        //
-        // &.prev {
-        //     margin-right: 3em;
-        // }
 
         &.dots {
             color: $main_color;
@@ -68,18 +48,13 @@
         }
 
         &:hover {
-            color: $color_white;
-            background-color: rgba($second_color, 1);
+            color: $second_color;
 
-            &.dots {
-                color: $main_color;
-                background-color: transparent;
-            }
+            &.dots {}
         }
 
         &.current {
-            color: $color_white;
-            background-color: rgba($second_color, 1);
+            color: $second_color;;
             cursor: default;
         }
     }

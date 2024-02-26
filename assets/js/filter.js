@@ -82,7 +82,6 @@ $(document).ready(function() {
                 initPreloder();
             },
             complete: function() {
-  
                 destroyPreloder();
             },
             success: function(data) {

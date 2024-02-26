@@ -77,8 +77,8 @@ function my_filter () {
             'prev_text' => '<i class="icon_long_arrow_left"></i>',
             'next_text' => '<i class="icon_long_arrow_right"></i>',
             'total' => $loop->max_num_pages,
-            'end_size' => 1,
-            'mid_size' => 1
+            'end_size' => 3,
+            'mid_size' => 3
         ) );
       ?>
     </nav>
