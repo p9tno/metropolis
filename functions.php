@@ -225,12 +225,10 @@ function my_cat_list_filter ( $post_type = 'post' , $taxonomy = '', $posts_per_p
 	<?php $count = wp_count_posts( $post_type ); // get_pr($count);?>
 
 	<div class="portfolio__category filter filter-list-js">
-
 		<div class="category">
-			<div class="category__head">
-				<div class="category__label"><span>Project category:</span></div>
-				<div class="category__toggle"></div>
-
+			<div class="category__label"><span>Project category:</span></div>
+		
+			<div class="category__list">
 				<div class="category__item filter-cat-js">
 					<input 
 						type="radio" 
@@ -244,9 +242,6 @@ function my_cat_list_filter ( $post_type = 'post' , $taxonomy = '', $posts_per_p
 						/>
 					<label for="term_all"><span>All</span><i><?php echo $count->publish; ?></i></label>
 				</div>
-			</div>
-
-			<div class="category__list">
 				<?php
 				$categories = get_terms(
 					$taxonomy,

@@ -128,20 +128,6 @@ $(document).ready(function() {
     };
     openMobileNav();
 
-    function toggleCategory() {
-        $('.category__toggle').click(function(event) {
-            $('.category').toggleClass('active');
-            $('.category__list').slideToggle(600)
-        })
-
-        $('.category').on('mouseleave', function(e) {
-            // console.log('mouse of');
-            $('.category').removeClass( 'active' );
-            $('.category__list').slideUp(600)
-        });
-    }
-    toggleCategory();
-
     function collapsedActiveOneDesktop() {
         $('.collapse__title').on('click', function() {
             let body = $(this).parent().find('.collapse__body');
