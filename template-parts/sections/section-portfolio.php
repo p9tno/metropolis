@@ -1,3 +1,7 @@
+<script>
+    let modalData = [];
+</script>
+
 <!-- begin portfolio-->
 <section class="portfolio section" id="portfolio">
     <div class="container_center">
@@ -7,7 +11,7 @@
         <?php echo my_cat_list_filter(
             $post_type = 'project',
             $taxonomy = 'project-cat',
-            $posts_per_page = '1',
+            $posts_per_page = '5',
         ); ?>
 
         <div class="preloaderFilter__inner">
@@ -20,7 +24,7 @@
                 <?php
                     $args = array(
                         'post_type' => 'project',
-                        'posts_per_page' => 1,
+                        'posts_per_page' => 5,
                         'orderby' => 'menu_order',
                         'order' => 'ASC',
                     );

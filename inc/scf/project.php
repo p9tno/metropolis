@@ -48,21 +48,21 @@ function project_fields($settings, $type, $id, $meta_type, $types)
                     'notes'       => '', // Текст под полем.
                 ),
                 // array(
-                //     'type'        => 'wysiwyg', // Тип поля. Обязательный.
+                //     'type'        => 'textarea', // Тип поля. Обязательный.
                 //     'name'        => 'project__excerpt', // Ключ поля. Обязательный.
                 //     'label'       => 'Project excerpt', // Заголовок поля.
+                //     'rows'        => 5, // Количество строк. По умолчанию 5.
                 //     'default'     => '', // Значение по умолчанию.
-                //     'instruction' => '', // Текст над полем.
-                //     'notes'       => '', // Текст под полем.
+                //     'instruction' => 'Wrap content in a tag <p>content</p>', // Текст над полем.
+                //     'notes'       => 'Example of content filling: <p>text</p>', // Текст под полем. 
                 // ),
                 array(
-                    'type'        => 'textarea', // Тип поля. Обязательный.
+                    'type'        => 'wysiwyg', // Тип поля. Обязательный.
                     'name'        => 'project__excerpt', // Ключ поля. Обязательный.
                     'label'       => 'Project excerpt', // Заголовок поля.
-                    'rows'        => 5, // Количество строк. По умолчанию 5.
                     'default'     => '', // Значение по умолчанию.
-                    'instruction' => 'Wrap content in a tag <p>content</p>', // Текст над полем.
-                    'notes'       => 'Example of content filling: <p>text</p>', // Текст под полем. 
+                    'instruction' => '', // Текст над полем.
+                    'notes'       => '', // Текст под полем.
                 ),
                 array(
                     'type'        => 'text', // Тип поля. Обязательный.
@@ -133,20 +133,28 @@ function project_fields($settings, $type, $id, $meta_type, $types)
 
                 array(
                     'type'        => 'text', // Тип поля. Обязательный.
-                    'name'        => 'project__position_lat', // Ключ поля. Обязательный.
-                    'label'       => 'Project position lat', // Заголовок поля.
+                    'name'        => 'project__position', // Ключ поля. Обязательный.
+                    'label'       => 'Project position', // Заголовок поля.
                     'default'     => '', // Значение по умолчанию.
-                    'instruction' => 'Setting for map, only numbers', // Текст над полем.
-                    'notes'       => '34.003', // Текст под полем.
+                    // 'instruction' => 'Setting for map, only numbers', // Текст над полем.
+                    'notes'       => '58.00491311794458, 56.20944506234034', // Текст под полем.
                 ),
-                array(
-                    'type'        => 'text', // Тип поля. Обязательный.
-                    'name'        => 'project__position_lng', // Ключ поля. Обязательный.
-                    'label'       => 'Project position lng', // Заголовок поля.
-                    'default'     => '', // Значение по умолчанию.
-                    'instruction' => 'Setting for map, only numbers', // Текст над полем.
-                    'notes'       => '-118.252', // Текст под полем.
-                ),
+                // array(
+                //     'type'        => 'text', // Тип поля. Обязательный.
+                //     'name'        => 'project__position_lat', // Ключ поля. Обязательный.
+                //     'label'       => 'Project position lat', // Заголовок поля.
+                //     'default'     => '', // Значение по умолчанию.
+                //     'instruction' => 'Setting for map, only numbers', // Текст над полем.
+                //     'notes'       => '34.003', // Текст под полем.
+                // ),
+                // array(
+                //     'type'        => 'text', // Тип поля. Обязательный.
+                //     'name'        => 'project__position_lng', // Ключ поля. Обязательный.
+                //     'label'       => 'Project position lng', // Заголовок поля.
+                //     'default'     => '', // Значение по умолчанию.
+                //     'instruction' => 'Setting for map, only numbers', // Текст над полем.
+                //     'notes'       => '-118.252', // Текст под полем.
+                // ),
                 array(
                     'type'        => 'image', // Тип поля. Обязательный.
                     'name'        => 'project__marker', // Ключ поля. Обязательный.

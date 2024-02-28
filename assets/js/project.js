@@ -8,7 +8,7 @@ $(document).ready(function() {
     console.log('project init');
     const dataProject =
     {
-        // cat: 'Kitchen Remodeling',
+        cat: 'Kitchen Remodeling',
         title: '1208 N. Lima St.',
         location: 'Thousand Oaks',
         text: '<p>Like most homes that were built as part of a development project in Thousand oaks the kitchen in this home was extremely small and enclosed from all sides with only 2 small pathways leading to it. The first think on the list was to remove the largest wall and opening the spaceto the living area.</p><p>Like most homes that were built as part of a development project in Thousand oaks the kitchen in this home was extremely small and enclosed from all sides with only 2 small pathways leading to it. The first think on the list was to remove the largest wall and opening the spaceto the living area.</p>',
@@ -25,7 +25,7 @@ $(document).ready(function() {
     // const location = dataProject.location;
     // const text = dataProject.text;
     // const link = dataProject.link;
-    const images = dataProject.images;
+    // const images = dataProject.images;
   
     // images.forEach(function(item) {
     // // ... делать что-то с item
@@ -36,7 +36,7 @@ $(document).ready(function() {
     // });
   
   
-    console.log(images);
+    // console.log(images);
   
   
     const project = $('.portfolio__item');
@@ -45,22 +45,36 @@ $(document).ready(function() {
   
     project.on('click', function (event) {
         event.preventDefault();
-        let id  = $(this).attr('data-modal');
+        // let id  = $(this).attr('data-modal');
+        let clickId  = $(this).attr('id');
+        console.log('clickId', clickId);
 
-        const title = $(this).attr('data-title');
-        const cat = $(this).attr('data-cat');
-        const location = $(this).attr('data-location');
-        const text = $(this).attr('data-text');
-        const link = $(this).attr('data-link');
-        const images2 = $(this).attr('data-images');
-        console.log(typeof(images2));
-        console.log(images2);
+        console.log('modalData : ', modalData[clickId][0]);
 
-        images2.forEach(function(item) {
-          console.log(item[0]);
-          console.log(item[1]);
+        const id = modalData[clickId][0].id; 
+        const cat = modalData[clickId][0].category;
+        const title = modalData[clickId][0].title;
+        const location = modalData[clickId][0].location;
+        const text = modalData[clickId][0].content;
+        const link = modalData[clickId][0].link;
+        const images = modalData[clickId][0].slide;
+
+        console.log(images);
+
+        // const title = $(this).attr('data-title');
+        // const cat = $(this).attr('data-cat');
+        // const location = $(this).attr('data-location');
+        // const text = $(this).attr('data-text');
+        // const link = $(this).attr('data-link');
+        // const images2 = $(this).attr('data-images');
+        // console.log(typeof(images2));
+        // console.log(images2);
+
+        // images2.forEach(function(item) {
+        //   console.log(item[0]);
+        //   console.log(item[1]);
       
-        });
+        // });
   
         // console.log(id);
   

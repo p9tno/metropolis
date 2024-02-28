@@ -96,16 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setMarkerContent(title, place, text, link, images) {
         let slides = '';
-        images.forEach((img) => {
-            slides += `<div class="swiper-slide">
-                <div class="mark__img img">
-                    <img
-                        src="${img}"
-                        alt=""
-                    />
-                </div>
-			</div>`;
-        });
+        // images.forEach((img) => {
+        //     slides += `<div class="swiper-slide">
+        //         <div class="mark__img img">
+        //             <img
+        //                 src="${img}"
+        //                 alt=""
+        //             />
+        //         </div>
+		// 	</div>`;
+        // });
 
         return `<div class="mark__slider">
 

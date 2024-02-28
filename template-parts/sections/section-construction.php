@@ -54,6 +54,22 @@
             </div>
         </div>
 
+        <?php 
+        //   $projects = get_posts(array(
+        //     'post_type' => 'project',
+        //     'posts_per_page' => -1,
+        //     ));
+
+        //     foreach($projects as $project) {
+
+        //         $post_ID = $project->ID;
+        //         $metas = get_post_meta($post_ID);
+        //         get_pr($metas);
+        //     }
+
+
+        ?>
+
         <script>
             ((g) => {
                 var h,
@@ -95,72 +111,124 @@
                 // Add other bootstrap parameters as needed, using camel case.
             });
 
-            const mapMarkers = 
-            [   
-                <?php 
-                    $args = array(
-                        'post_type' => 'project',
-                        'posts_per_page' => -1,
-                    );
-                    $query = new WP_Query($args);
+            <?php
+                $projects = get_posts(array(
+                    'post_type' => 'project',
+                    'posts_per_page' => -1,
+                ));
+                $projectMetas = [];
 
-                    $show_in_map = 0;
+                foreach($projects as $project) {
 
-                    if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
+                    $post_ID = $project->ID;
+                    $metas = get_post_meta($post_ID);
 
-                        $show_in_map = get_post_meta( get_the_ID(), 'project__boolean', true ); 
-                        $meta_position_lat = get_post_meta( get_the_ID(), 'project__position_lat', true );
-                        $meta_position_lng = get_post_meta( get_the_ID(), 'project__position_lng', true );
-
-                        if ($show_in_map && is_numeric($meta_position_lat) && is_numeric($meta_position_lng)) {
-                            $meta_title = get_post_meta( get_the_ID(), 'project__title', true );
-                            $meta_location = get_post_meta( get_the_ID(), 'project__location', true );
-                            $meta_link = get_post_meta( get_the_ID(), 'project__link', true );
-                            $meta_excerpt = get_post_meta( get_the_ID(), 'project__excerpt', true );
-                            $meta_thumb = get_post_meta( get_the_ID(), 'project__thumb', false );
-                     
-                            if (get_post_meta( get_the_ID(), 'project__marker', true )) {
-                                $meta_marker = wp_get_attachment_url(get_post_meta( get_the_ID(), 'project__marker', true ));
-                            } else {
-                                $meta_marker = get_template_directory_uri() . '/assets/img/marker.svg';
+                    if($metas['project__boolean'][0]) {
+                        $category = get_the_terms($post_ID, 'project-cat');
+                        $post_meta = new StdClass();
+                        $post_meta->id = $project->ID;
+                        $post_meta->content = $project->content;
+    
+                        $category_arr = [];
+                        if (! empty($category)) { 
+                            $total = count($category);
+                            $counter = 0;
+                            foreach ($category as $cat) {
+                                $counter++;
+                                if($counter == $total) { $cat_name = $cat->name;
+                                } else { $cat_name = $cat->name . ', '; }
+                                array_push($category_arr, $cat_name);
                             }
- 
-                            ?>
-                                {
-                                    title: '<?php echo $meta_title; ?>',
-                                    place: '<?php echo $meta_location; ?>',
-                                    text: '<?php echo $meta_excerpt; ?>',
-                                    link: '<?php echo $meta_link; ?>',
-                                    images: [
-                                        <?php foreach ($meta_thumb as $img_id) { $img_url = wp_get_attachment_url($img_id); ?> '<?php echo $img_url; ?>', <?php } ?>
-                                    ],
-                                    icon: '<?php echo $meta_marker; ?>',
-                                    position: {
-                                        lat: Number('<?php echo $meta_position_lat; ?>'),
-                                        lng: Number('<?php echo $meta_position_lng; ?>'),
-                                    },
-                                },
-                            <?php 
                         }
-                    endwhile;
-                    endif;
-                    wp_reset_postdata();
+                        $post_meta->category = $category_arr;
+    
+                        $post_meta->title = $metas['project__title'][0];
+                        $post_meta->location = $metas['project__location'][0];
+                        $post_meta->content = $metas['project__excerpt'][0];
+                        
+
+                       
+                        
+                        if ($metas['project__marker'][0]) {
+                            $post_meta->icon = wp_get_attachment_url($metas['project__marker'][0]);
+                        } else {
+                            $post_meta->icon = get_template_directory_uri() . '/assets/img/marker.svg';
+                        }
+    
+                        $gallery_item = [];
+                        foreach ($metas['gallery_item'] as $img_id) { 
+                            $img_url = wp_get_attachment_url($img_id);
+                            array_push($gallery_item, $img_url);
+                        }
+                        $post_meta->gallery = $gallery_item;
+
+                        // $post_meta->position = [];
+
+                        // $post_meta->position 
+                        // 53.915639688200294, 27.441323686370282
+
+                        $testObject = new StdClass();
+                        $testObject->lat = 53.915639688200294;
+                        $testObject->lng = 27.441323686370282;
+                        $testObject->lat = $metas['project__position_lat'][0];
+                        $testObject->lng = $metas['project__position_lng'][0];
+                        $post_meta->position = $testObject;
+
+                        $post_meta->position = $metas['project__position'][0];
+                        $post_meta->coord = [];
+                        $addCoord = new StdClass();
+
+                        // $text = $metas['project__position'][0];
+                        // $text = preg_replace("/[^a-zа-яё0-9\s]/i", '', $text);
+                        // $array = preg_split('/(\s)/', $text);
+                        // $array = array_diff($array, array(''));
+
+                        // $post_meta->position = $array;
+                        // $addCoord->lat = $array[0];
+                        // $addCoord->lng = $array[1];
+                        // $post_meta->coord = 
+
+                        // $addCoord->lat =
+
+                        //  = $metas['project__position'][0];
+
+
+
+
+        
+                        
+
+
+                 
+                        
+                        array_push($projectMetas, $post_meta);
+
+                  
+                    }
+    
+                }
+
                 ?>
 
-                // {
-                //     title: '15 Castilian Ct',
-                //     place: 'Thousand Oaks',
-                //     text: '<p>Like most homes that were built as part of a development project in Thousand oaks the kitchen in this home was extremely small and enclosed from all sides with only 2 small pathways leading to it. The first think on the list was to remove the largest wall and opening the spaceto the living area.</p><p>Like most homes that were built as part of a development project in Thousand oaks the kitchen in this home was extremely small and enclosed from all sides with only 2 small pathways leading to it. The first think on the list was to remove the largest wall and opening the spaceto the living area. <a href="">Read More</a></p>',
-                //     link: 'http://frontendie.ru',
-                //     images: ['/img/slide-1.jpg', '/img/slide-2.jpg'],
-                //     icon: '../../img/marker.svg',
-                //     position: {
-                //         lat: 34.055,
-                //         lng: -118.367
-                //     },
-                // },
-            ];
-            // console.log(mapMarkers);
+            
+
+            const mapMarkers = <?php echo json_encode($projectMetas); ?>;
+
+            console.log(mapMarkers);
+
+            // const mapMarkers = allProjects.filter((e) => e.coord).map((e) => {
+            //     const {
+            //         coord
+            //     } = e;
+            //     return {
+            //         ...e,
+            //         position: {
+            //             lat: +coord.split(',')[0],
+            //             lng: +coord.split(',')[1]
+            //         },
+            //     }
+            // }) 
+
             const ram = navigator.deviceMemory;
             const cpu = navigator.hardwareConcurrency;
         </script>
