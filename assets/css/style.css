@@ -3892,7 +3892,7 @@ input[type=number] {
 }
 @media (min-width: 768px) {
   .project__content {
-    width: 41.125em;
+    flex-grow: 1;
   }
 }
 @media (min-width: 768px) {
@@ -4030,8 +4030,9 @@ input[type=number] {
 }
 @media (min-width: 768px) {
   .project__slider {
-    margin: 0;
+    margin: 0 0 0 5.25em;
     width: 45em;
+    flex: none;
   }
 }
 @media (min-width: 768px) {

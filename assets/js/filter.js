@@ -83,6 +83,7 @@ $(document).ready(function() {
             },
             complete: function() {
                 destroyPreloder();
+                showModalContent();
             },
             success: function(data) {
                 $('.filter__content').html(data);
@@ -102,6 +103,201 @@ $(document).ready(function() {
             $('.preloaderFilter-js').hide();
         },600);
     }
+
+    function showModalContent () {
+        const project = $('.portfolio__item');
+        const modalBody = $('#modalbody');
+      
+        project.on('click', function (event) {
+          event.preventDefault();
+          // let id  = $(this).attr('data-modal');
+          let clickId  = $(this).attr('id');
+        //   console.log('clickId', clickId);
+    
+        //   console.log('modalData : ', modalData[clickId][0]);
+    
+          const id = modalData[clickId][0].id; 
+          const cat = modalData[clickId][0].category;
+          const title = modalData[clickId][0].title;
+          const location = modalData[clickId][0].location;
+          const text = modalData[clickId][0].content;
+          const link = modalData[clickId][0].link;
+          const images = modalData[clickId][0].slides;
+    
+          modalBody.html(setModalContent(cat, title, location, text, link, images));
+    
+          initProjectSlider();
+    
+          $('#project').modal('show');
+          console.log(modalData);
+        });
+      
+        $('.modal').on('hide.bs.modal', () => {
+            // console.log('hide modal');
+            modalBody.html('');
+        });
+      
+        function setModalContent(cat, title, location, text, link, images) {
+            let sliderDiv = '';
+            if (images[0].url != false) {
+              let slides = '';
+              images.forEach((data) => {
+                  slides += `<div class="swiper-slide">
+                      <div class="project__img img ${data['radio']}">
+                          <img
+                              src="${data['url']}"
+                              alt="image"
+                              loading="lazy"
+                          />
+                      </div>
+                  </div>`;
+              });
+      
+              let countSlides = images.length;
+              let control = '';
+              let fraction = '';
+              if(countSlides > 2) {
+                control = `<div class="project__control swiper-control dark">
+                  <i class="swiper-arrow icon_arrow_left"></i>
+                  <div class="swiper-pagination"></div>
+                  <i class="swiper-arrow icon_arrow_right"></i>
+                </div>`
+      
+                fraction = `<div class="project__fraction desktop">
+                  <div class="fraction"><span class="fraction__current fraction_current_js">01</span>
+                    <div class="fraction__line"></div><span class="fraction__all fraction_all_js">03</span>
+                  </div>
+                </div>`
+              }
+              sliderDiv = `<div class="project__slider">
+                ${fraction}
+                <div class="swiper project_js">
+                  <div class="swiper-wrapper">
+                      ${slides}
+                  </div>
+                  ${control}
+                </div>
+              </div>`
+    
+            }
+    
+            let locationDivMobile = '';
+            let locationDivDesktop = '';
+            if (location) {
+              locationDivMobile = `<div class="project__location">${location}</div>`;
+              locationDivDesktop =`<div class="project__location desktop">${location}</div>`
+            }
+    
+            let linkDiv = '';
+            if (link) {
+              linkDiv = `<div class="project__bottom">
+                  <a class="btn" href="${link}"><span>FREE ESTIMATE</span></a>
+              </div>`
+            }
+    
+      
+            let recalContent = `<div class="project__recall">
+              <div class="recall__box">
+                <div class="recall__title">client testimonial</div>
+                <div class="recall__text">
+                  <p>Jonathan is everything you should be looking for in a general contractor: He listens to what you you want from your project, he has a keen sense of design and aesthetics, he has a stellar collection of subcontractors, and he is responsive with knowledgeable advice for your inevitable mid-project questions. We are now enjoying our small but gem-like kitchen remodel with nothing but good thoughts on the road  the got us here.</p>
+                </div>
+                <div class="recall__person">
+                  <div class="person">
+                    <div class="person__img img"><img src="../../img/person.webp" alt="image" loading="lazy"/></div>
+                    <div class="person__info">
+                      <div class="person__title">Leor & Gordon Ownby</div>
+                      <div class="person__desc">3715 Los Olivos Ln. Glendale Angeles, CA</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+      
+            return `<div class="project__wrap">
+      
+                <div class="project__content mobile">
+                  <div class="project__cat">${cat}</div>
+                  <div class="project__title">${title}</div>
+                  ${locationDivMobile}
+                </div>
+    
+                ${sliderDiv}
+        
+                <div class="project__content">
+                  <div class="project__scrolled">
+                    <div class="project__cat desktop">${cat}</div>
+                    <div class="project__title desktop">${title}</div>
+                    ${locationDivDesktop}
+                    <div class="project__text">${text}</div>
+                    ${recalContent}
+                    ${linkDiv}  
+                  </div>
+                </div>
+              </div>
+            `;
+        }
+      
+      
+        function initProjectSlider() {
+            console.log('init slider project');
+            const project = new Swiper(".project_js", {
+                slidesPerView: 1,
+                allowTouchMove: false,
+                clickable: false,
+                // loop: true,
+                speed: 2000,
+      
+                // autoplay: {
+                //   delay: 5000,
+                // },
+      
+                navigation: {
+                    nextEl: '.icon_arrow_right',
+                    prevEl: '.icon_arrow_left',
+                },
+      
+                breakpoints: {
+                    768: {
+                        // loop: false,
+                        grid: {
+                            rows: 2,
+                        },
+                    },
+      
+                },
+      
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "fraction",
+                },
+      
+                on: {
+                    init: function (e) {
+                        $('.fraction_current_js').text(pad(e.realIndex + 1));
+                        $('.fraction_all_js').text(pad(Math.ceil(e.imagesToLoad.length / 2)));
+                    },
+                },
+      
+            });
+      
+            project.on('slideChange', function (e) {
+                let currentSlide = e.realIndex;
+                $('.project__fraction').addClass('active');
+      
+                setTimeout(()=>{
+                    $('.project__fraction').removeClass('active');
+                    $('.fraction_current_js').text(pad(currentSlide + 1));
+                },1000);
+            });
+      
+            function pad(n) {
+                return (n < 10) ? ("0" + n) : n;
+            }
+        }
+    }
+    
+    showModalContent();
 
 });
 

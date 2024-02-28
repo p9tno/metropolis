@@ -27,16 +27,7 @@ if (isset($meta_thumb[2])) {
 }  else {
     $img_3 = $no_img;
 }
-
-// $project = get_post( get_the_ID() );
-// $post_ID = $project->ID;
-// $category = get_the_terms($post_ID, 'project-cat'); //get_pr($category);
-// echo count($category);
-
-
-
 ?>
-
 
 <div class="portfolio__item" data-modal="#project" id=<?php the_ID(); ?>>
     <div class="portfolio__content">
@@ -73,96 +64,62 @@ if (isset($meta_thumb[2])) {
     <div class="portfolio__img img"><?php if ($img_2) {echo $img_2; } ?></div>
     
     <div class="portfolio__img img"><?php if ($img_3) {echo $img_3; } ?></div>
+
     <?php 
-    
-    $project = get_post( get_the_ID() );
-    // get_pr($project);
-    
-    $projectMetas = [];
-    $post_ID = $project->ID;
-    $metas = get_post_meta($post_ID); // get_pr($metas);
-    $category = get_the_terms($post_ID, 'project-cat'); //get_pr($category);
-    $gallery = SCF::get( 'project__gallery', $post_ID );
-    $post_meta = new StdClass();
-    
-    $post_meta->id = $project->ID;
-    $post_meta->content = $project;
+        $project = get_post( get_the_ID() );
+        // get_pr($project);
+        
+        $projectMetas = [];
+        $post_ID = $project->ID;
+        $metas = get_post_meta($post_ID); // get_pr($metas);
+        $category = get_the_terms($post_ID, 'project-cat'); //get_pr($category);
+        $gallery = SCF::get( 'project__gallery', $post_ID );
+        $post_meta = new StdClass();
+        
+        $post_meta->id = $project->ID;
+        $post_meta->content = $project->post_content;
 
-    $category_arr = [];
-    if (! empty($category)) { 
-        $total = count($category);
-        $counter = 0;
-        foreach ($category as $cat) {
-            $counter++;
-            if($counter == $total){
-                // делаем что-либо с последним элементом...
-                $cat_name = $cat->name;
-            } else {
-                // делаем что-либо с каждым элементом
-                $cat_name = $cat->name . ', ';
+        $category_arr = [];
+        if (! empty($category)) { 
+            $total = count($category);
+            $counter = 0;
+            foreach ($category as $cat) {
+                $counter++;
+                if($counter == $total){
+                    $cat_name = $cat->name;
+                } else {
+                    $cat_name = $cat->name . ', ';
+                }
+                array_push($category_arr, $cat_name);
             }
-            array_push($category_arr, $cat_name);
         }
-    }
-    $post_meta->category = $category_arr;
+        $post_meta->category = $category_arr;
 
-    $post_meta->title = $metas['project__title'][0];
-    $post_meta->location = $metas['project__location'][0];
+        $post_meta->title = $metas['project__title'][0];
+        $post_meta->location = $metas['project__location'][0];
+        $post_meta->link = $metas['project__link'][0];
 
-    $post_meta->slides = [];
-    foreach ($gallery as $slide) { 
-        $slideObject = new StdClass();
-        $slideObject->radio = $slide['gallery_radio'];
-        $slideObject->url = wp_get_attachment_url($slide['gallery_item']);
-        $arr[] = $slideObject;
-        $post_meta->slides = $arr;
-    }
+        $post_meta->slides = [];
+        foreach ($gallery as $slide) { 
+            $slideObject = new StdClass();
+            $slideObject->radio = $slide['gallery_radio'];
+            $slideObject->url = wp_get_attachment_url($slide['gallery_item']);
+            $arr[] = $slideObject;
+            $post_meta->slides = $arr;
+        }
 
+        // $gallery_item = [];
+        // foreach ($metas['gallery_item'] as $img_id) { 
+        //     $img_url = wp_get_attachment_url($img_id);
+        //     array_push($gallery_item, $img_url);
+        // }
+        // $post_meta->gallery = $gallery_item;
 
-
-    $gallery_item = [];
-    foreach ($metas['gallery_item'] as $img_id) { 
-        $img_url = wp_get_attachment_url($img_id);
-        // $post_meta->item = $img_url;
-        array_push($gallery_item, $img_url);
-    }
-    // $post_meta->gallery = $gallery_item;
-
-    $gallery_radio = [];
-    foreach ($metas['gallery_radio'] as $item) { 
-        // $post_meta->item = $item;
-        array_push($gallery_radio, $item);
-    }
-    // $post_meta->radio = $gallery_radio;
-
-    // $post_meta->slide = array($gallery_radio, $gallery_item);
-    
-    array_push($projectMetas, $post_meta);
-    
-    
-    
-    
-    // echo $project->ID . '<br>';
-    // echo $project->guid . '<br>';
-    // echo $project->post_title . '<br>';
-    // echo $project->post_content . '<br>';
-    
-    // if (! empty($category)) { $i = '';
-    //     foreach ($category as $cat) {
-    //         echo $i . $cat->name;
-    //         $i = ', ';
-    //     }
-    // }
-    // echo 'project__title' . $metas['project__title'][0] . '<br>';
-    // echo 'project__location' . $metas['project__location'][0] . '<br>';
-    // echo 'project__location' . $metas['project__location'][0] . '<br>';
-    // echo 'project__location' . $metas['project__location'][0] . '<br>';
-    
-    
+        array_push($projectMetas, $post_meta);
+        
     ?>
     
     <script>
         modalData[<?php the_ID(); ?>] = <?php echo json_encode($projectMetas); ?>
-        // console.log(modalData[<?php // the_ID(); ?>]);
     </script>
 </div>
