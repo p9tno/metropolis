@@ -33,42 +33,6 @@
 
             <?php // my_paginate ($query); ?>
 
-            <!-- begin recall__item 1-->
-            <!-- <div class="recall__item">
-                <div class="recall__box">
-                    <div class="recall__text">
-                        <p>We screened at least 5 contractors before settling on Jonathan and his team. We had three
-                            bathrooms to completely remodel and miscellaneous items around the home to redo. Jonathan
-                            took us through the entire process and provided us with accurate estimates. He accommodated
-                            the inevitable changes along the way and assisted with the entire process from design to
-                            selecting fixtures. We are very happy with the outcome and plan on using his team to remodel
-                            our Kitchen next year.</p>
-                        <p>The only bad thing is I used to look forward to traveling, so that I could use the shower at
-                            the hotel. I recently stayed at the Trump Tower and it’s bathrooms didn’t come close to
-                            mine, so I have lost the only positive of business travel.</p>
-                    </div>
-                    <div class="recall__person">
-                        <div class="person">
-                            <div class="person__img img"><img src="../../img/person.webp" alt="image" loading="lazy" />
-                            </div>
-                            <div class="person__info">
-                                <div class="person__title">Leor & Gordon Ownby</div>
-                                <div class="person__desc">3715 Los Olivos Ln. Glendale Angeles, CA</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="recall__video">
-                    <div class="video">
-                        <div class="video__wrapper js-youtube" id="OuOXvavAy1c"
-                            style="background-image: url('../../img/recall_1.webp')">
-                            <div class="video__play"></div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- end recall__item 1-->
-
             <!-- begin recall__item 2-->
             <!-- <div class="recall__item">
                 

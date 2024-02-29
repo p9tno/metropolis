@@ -63,7 +63,7 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
 			array(
                 array(
                     'type'        => 'text', // Тип поля. Обязательный.
-                    'name'        => 'id_video', // Ключ поля. Обязательный.
+                    'name'        => 'id_youtube_video', // Ключ поля. Обязательный.
                     'label'       => 'ID video', // Заголовок поля.
                     'default'     => '', // Значение по умолчанию.
                     'instruction' => 'ID is the set of characters after "watch?v=" in the browser line. As an example from the line https://www.youtube.com/watch?v=yCChjRhpV64 , id= yCChjRhpV64', // Текст над полем.
@@ -71,7 +71,7 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
                 ),
                 array(
                     'type'        => 'image', // Тип поля. Обязательный.
-                    'name'        => 'background', // Ключ поля. Обязательный.
+                    'name'        => 'bg_youtube_video', // Ключ поля. Обязательный.
                     'label'       => 'Background video', // Заголовок поля.
                     'size'        => 'thumbnail', // Размер изображения в метабоксе.
                     'instruction' => '', // Текст над полем.
