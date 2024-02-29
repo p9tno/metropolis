@@ -3,26 +3,12 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
 {
     if ($type === 'testimonials' && get_page_template_slug($id) == '') {
 
-		$Section = SCF::add_setting('acf_testimonials_info', '<span style="color:#517DC0;">Only 1 and every 9 elements can display content and video in one element. On the testimonials page</span>');
-
-		$settings[] = $Section;
-	}
-    if ($type === 'testimonials' && get_page_template_slug($id) == '') {
-
-		$Section = SCF::add_setting('acf_testimonials_settings', 'Testimonials main settings');
+		$Section = SCF::add_setting('acf_testimonials_settings', '<span>Testimonials main settings. <span style="color:#517DC0;">Only 1 and every 9 elements can display content and video in one element. On the testimonials page</span></span>');
 
 		$Section->add_group(
 			'testimonials-settings',
 			false,
 			array(
-                array(
-                    'type'        => 'text', // Тип поля. Обязательный.
-                    'name'        => 'recall__title', // Ключ поля. Обязательный.
-                    'label'       => 'Testimonials title', // Заголовок поля.
-                    'default'     => 'client testimonial', // Значение по умолчанию.
-                    'instruction' => '', // Текст над полем.
-                    'notes'       => 'appears only on the portfolio page', // Текст под полем.
-                ),
                 array(
                     'type'        => 'text', // Тип поля. Обязательный.
                     'name'        => 'person__title', // Ключ поля. Обязательный.
