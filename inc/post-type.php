@@ -14,13 +14,14 @@ function custom_register_post_type() {
 			'menu_name'          => 'Testimonials'
 		  ),
 		'public'     => false,
-		'supports'   => array('title'),
+		'supports'   => array('title', 'editor'),
         'menu_icon'  => 'dashicons-megaphone',
         'menu_position' => 10,
         'show_ui' => true, 
 		'rewrite'    => [
 			'with_front' => false
-		]
+		],
+		'show_in_rest'  => true,
 	));
     // END recall
 

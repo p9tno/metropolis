@@ -291,7 +291,7 @@ require get_template_directory() . '/inc/disable-verification.php';
 require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/breadcrumb.php';
 require get_template_directory() . '/inc/post-type.php';
-// require get_template_directory() . '/inc/filter.php';
+require get_template_directory() . '/inc/filter.php';
 // require get_template_directory() . '/inc/ajax-load-posts.php';
 
 
@@ -301,8 +301,8 @@ require get_template_directory() . '/inc/post-type.php';
  */
 require get_template_directory() . '/inc/scf/home.php';
 require get_template_directory() . '/inc/scf/project.php';
-require get_template_directory() . '/inc/filter.php';
-// require get_template_directory() . '/inc/scf/ourblog.php';
+require get_template_directory() . '/inc/scf/recall-page.php';
+require get_template_directory() . '/inc/scf/recall.php';
 // require get_template_directory() . '/inc/scf/admissions.php';
 // require get_template_directory() . '/inc/scf/about.php';
 
