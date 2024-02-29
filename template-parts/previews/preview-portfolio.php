@@ -108,6 +108,25 @@ if (isset($meta_thumb[2])) {
             $post_meta->slides = $arr;
         }
 
+        // start recall
+        if (array_key_exists('project_relation_recall', $metas) ) {
+            $post_meta->recall = [];
+            $recall_id = $metas['project_relation_recall'][0];
+            $recall = get_post( $recall_id );
+            $recall_metas = get_post_meta( $recall_id );
+    
+            $recall_content = new StdClass();
+            $recall_content->content = $recall->post_content;
+            $recall_content->title = $recall_metas['person__title'][0];
+            $recall_content->desc = $recall_metas['person__desc'][0];
+            $recall_content->url = wp_get_attachment_url($recall_metas['person__img'][0]);
+            
+            $post_meta->recall = $recall_content;
+        }
+        // end recall
+
+
+
         // $gallery_item = [];
         // foreach ($metas['gallery_item'] as $img_id) { 
         //     $img_url = wp_get_attachment_url($img_id);

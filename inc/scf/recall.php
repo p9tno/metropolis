@@ -12,7 +12,7 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
                 array(
                     'type'        => 'text', // Тип поля. Обязательный.
                     'name'        => 'person__title', // Ключ поля. Обязательный.
-                    'label'       => 'Person title', // Заголовок поля.
+                    'label'       => 'Title', // Заголовок поля.
                     'default'     => '', // Значение по умолчанию.
                     'instruction' => '', // Текст над полем.
                     'notes'       => '', // Текст под полем.
@@ -20,7 +20,7 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
                 array(
                     'type'        => 'text', // Тип поля. Обязательный.
                     'name'        => 'person__desc', // Ключ поля. Обязательный.
-                    'label'       => 'Person desc', // Заголовок поля.
+                    'label'       => 'Desc', // Заголовок поля.
                     'default'     => '', // Значение по умолчанию.
                     'instruction' => '', // Текст над полем.
                     'notes'       => '', // Текст под полем.
@@ -28,7 +28,7 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
                 array(
                     'type'        => 'image', // Тип поля. Обязательный.
                     'name'        => 'person__img', // Ключ поля. Обязательный.
-                    'label'       => 'Person img', // Заголовок поля.
+                    'label'       => 'Img', // Заголовок поля.
                     'size'        => 'thumbnail', // Размер изображения в метабоксе.
                     'instruction' => '', // Текст над полем.
                     'notes'       => '', // Текст под полем.

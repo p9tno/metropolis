@@ -123,8 +123,9 @@ $(document).ready(function() {
           const text = modalData[clickId][0].content;
           const link = modalData[clickId][0].link;
           const images = modalData[clickId][0].slides;
+          const recall = modalData[clickId][0].recall;
     
-          modalBody.html(setModalContent(cat, title, location, text, link, images));
+          modalBody.html(setModalContent(cat, title, location, text, link, images, recall));
     
           initProjectSlider();
     
@@ -137,7 +138,7 @@ $(document).ready(function() {
             modalBody.html('');
         });
       
-        function setModalContent(cat, title, location, text, link, images) {
+        function setModalContent(cat, title, location, text, link, images, recall) {
             let sliderDiv = '';
             if (images[0].url != false) {
               let slides = '';
@@ -194,25 +195,41 @@ $(document).ready(function() {
                   <a class="btn" href="${link}"><span>FREE ESTIMATE</span></a>
               </div>`
             }
-    
-      
-            let recalContent = `<div class="project__recall">
-              <div class="recall__box">
-                <div class="recall__title">client testimonial</div>
-                <div class="recall__text">
-                  <p>Jonathan is everything you should be looking for in a general contractor: He listens to what you you want from your project, he has a keen sense of design and aesthetics, he has a stellar collection of subcontractors, and he is responsive with knowledgeable advice for your inevitable mid-project questions. We are now enjoying our small but gem-like kitchen remodel with nothing but good thoughts on the road  the got us here.</p>
-                </div>
-                <div class="recall__person">
-                  <div class="person">
-                    <div class="person__img img"><img src="../../img/person.webp" alt="image" loading="lazy"/></div>
-                    <div class="person__info">
-                      <div class="person__title">Leor & Gordon Ownby</div>
-                      <div class="person__desc">3715 Los Olivos Ln. Glendale Angeles, CA</div>
+            
+            let recalContent = '';
+            if (recall && recall.content) { 
+                let personImg = '';
+                if (recall.url) {
+                    personImg = `<div class="person__img img"><img src="${recall.url}" alt="image" loading="lazy"/></div>`
+                }
+
+                let personTitle = '';
+                if (recall.title) {
+                    personTitle = `<div class="person__title">${recall.title}</div>`
+                }
+
+                let personDesc = '';
+                if (recall.desc) {
+                    personDesc = `<div class="person__desc">${recall.desc}</div>`
+                }
+
+                recalContent = `<div class="project__recall">
+                  <div class="recall__box">
+                    <div class="recall__title">client testimonial</div>
+                    <div class="recall__text">${recall.content}</div>
+                    <div class="recall__person">
+                      <div class="person">
+                        ${personImg}
+                        <div class="person__info">
+                            ${personTitle}
+                            ${personDesc}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>`;
+                </div>`;
+            }
+
       
             return `<div class="project__wrap">
       

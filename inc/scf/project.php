@@ -47,15 +47,6 @@ function project_fields($settings, $type, $id, $meta_type, $types)
                     'instruction' => '', // Текст над полем.
                     'notes'       => '', // Текст под полем.
                 ),
-                // array(
-                //     'type'        => 'textarea', // Тип поля. Обязательный.
-                //     'name'        => 'project__excerpt', // Ключ поля. Обязательный.
-                //     'label'       => 'Project excerpt', // Заголовок поля.
-                //     'rows'        => 5, // Количество строк. По умолчанию 5.
-                //     'default'     => '', // Значение по умолчанию.
-                //     'instruction' => 'Wrap content in a tag <p>content</p>', // Текст над полем.
-                //     'notes'       => 'Example of content filling: <p>text</p>', // Текст под полем. 
-                // ),
                 array(
                     'type'        => 'wysiwyg', // Тип поля. Обязательный.
                     'name'        => 'project__excerpt', // Ключ поля. Обязательный.
@@ -71,6 +62,14 @@ function project_fields($settings, $type, $id, $meta_type, $types)
                     'default'     => '', // Значение по умолчанию.
                     'instruction' => '', // Текст над полем.
                     'notes'       => '', // Текст под полем.
+                ),
+                array(
+                    'type'        => 'relation', // Тип поля. Обязательный.
+                    'name'        => 'project_relation_recall', // Ключ поля. Обязательный.
+                    'label'       => 'Testimonial selection field', // Заголовок поля.
+                    'post-type'   => array('testimonials'), // Типы записей.
+                    'limit'       => 1, // Максимальное количество выбираемых элементов.
+                    'instruction' => 'To display the testimonial, need to fill out the content. (fields: title, desc, img are optional.)',
                 ),
 			)
 		);
