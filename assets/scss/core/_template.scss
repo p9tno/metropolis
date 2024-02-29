@@ -91,6 +91,10 @@ body {
 
 			}
 
+			span {
+				min-width: 11em;
+			}
+
 			&:after {
 				content: '\e901';
 				font-family: 'icon';

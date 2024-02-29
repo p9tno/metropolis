@@ -25,6 +25,10 @@ function metropolis_scripts() {
 		wp_enqueue_script( 'metropolis-filter', get_template_directory_uri() . '/assets/js/filter.js', array(), _S_VERSION, true );
 	}
 
+	if ( is_page_template(['template-testimonials.php']) ){
+		wp_enqueue_script( 'metropolis-loadmore', get_template_directory_uri() . '/assets/js/loadmore.js', array(), _S_VERSION, true );
+	}
+
 
 	wp_enqueue_script( 'metropolis-function', get_template_directory_uri() . '/assets/js/function.js', array(), _S_VERSION, true );
 }
@@ -292,7 +296,7 @@ require get_template_directory() . '/inc/helpers.php';
 require get_template_directory() . '/inc/breadcrumb.php';
 require get_template_directory() . '/inc/post-type.php';
 require get_template_directory() . '/inc/filter.php';
-// require get_template_directory() . '/inc/ajax-load-posts.php';
+require get_template_directory() . '/inc/ajax-load-posts.php';
 
 
 

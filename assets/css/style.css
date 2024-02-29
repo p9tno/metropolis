@@ -649,6 +649,9 @@ body {
     font-size: 1.25em;
   }
 }
+.section__more a span {
+  min-width: 11em;
+}
 .section__more a:after {
   content: "";
   font-family: "icon";
