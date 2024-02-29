@@ -130,7 +130,7 @@ $(document).ready(function() {
           initProjectSlider();
     
           $('#project').modal('show');
-          console.log(modalData);
+        //   console.log(modalData);
         });
       
         $('.modal').on('hide.bs.modal', () => {
@@ -257,7 +257,7 @@ $(document).ready(function() {
       
       
         function initProjectSlider() {
-            console.log('init slider project');
+            // console.log('init slider project');
             const project = new Swiper(".project_js", {
                 slidesPerView: 1,
                 allowTouchMove: false,
