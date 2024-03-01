@@ -308,8 +308,7 @@ require get_template_directory() . '/inc/scf/project.php';
 require get_template_directory() . '/inc/scf/recall-page.php';
 require get_template_directory() . '/inc/scf/recall.php';
 require get_template_directory() . '/inc/scf/services.php';
-// require get_template_directory() . '/inc/scf/admissions.php';
-// require get_template_directory() . '/inc/scf/about.php';
+require get_template_directory() . '/inc/scf/service.php';
 
 /**
  * SCF settings. my-theme-settings

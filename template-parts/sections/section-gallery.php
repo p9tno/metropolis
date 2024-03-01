@@ -1,16 +1,27 @@
+<?php
+  $no_img = wp_get_attachment_image(SCF::get_option_meta( 'my-theme-settings', 'option_no_img' ), 'full');
+?>
 
-        <!-- begin gallery-->
-        <section class="gallery section" id="gallery">
-          <div class="container_center">
-            <h1 class="section__title">Kitchen Remodeling</h1>
-          </div>
-          <div class="gallery__content">
-            <div class="gallery__item img"><img src="../../img/gallery_1.webp" alt="image" loading="lazy"/></div>
-            <div class="gallery__item img"><img src="../../img/gallery_2.webp" alt="image" loading="lazy"/></div>
-            <div class="gallery__item img"><img src="../../img/gallery_3.webp" alt="image" loading="lazy"/></div>
-            <div class="gallery__item img"><img src="../../img/gallery_4.webp" alt="image" loading="lazy"/></div>
-            <div class="gallery__item img"><img src="../../img/gallery_6.webp" alt="image" loading="lazy"/></div>
-            <div class="gallery__item img"><img src="../../img/gallery_5.webp" alt="image" loading="lazy"/></div>
-          </div>
-        </section>
-        <!-- end gallery-->
+<!-- begin gallery-->
+<section class="gallery section" id="gallery">
+    <div class="container_center">
+        <h1 class="section__title"><?php the_title(); ?></h1>
+    </div>
+    <?php $row = SCF::get('service_gallery_list');
+    if ($row) { ?>
+        <div class="gallery__content">
+          <?php $i = 0; foreach ($row as $col) { ?>
+            <?php 
+              if ($col['service_gallery_item']) {
+                $img = wp_get_attachment_image($col['service_gallery_item'], 'full');
+              } else {
+                $img = $no_img;
+              }
+            ?>
+            <div class="gallery__item img"><?php echo $img; ?></div>
+            <?php if ($i == 5) { break; } ?>
+          <?php $i++; } ?>
+        </div>
+    <?php }; ?>
+</section>
+<!-- end gallery-->

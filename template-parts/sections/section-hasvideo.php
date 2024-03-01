@@ -1,24 +1,47 @@
-        <!-- begin hasvideo-->
-        <section class="hasvideo section" id="hasvideo">
-          <div class="container_center">
-            <div class="hasvideo__content">
+
+<?php if (SCF::get( 'boolean_hasvideo' )) { ?>
+  <?php
+    $no_img = wp_get_attachment_image(SCF::get_option_meta( 'my-theme-settings', 'option_no_img' ), 'full');
+    if (SCF::get( 'hasvideo__big__image' )) {
+      $big_img = wp_get_attachment_image(SCF::get( 'hasvideo__big__image' ), 'full');
+    } else {
+      $big_img = $no_img;
+    }
+    if (SCF::get( 'bg_youtube_hasvideo' )) {
+      $bg_video = wp_get_attachment_image(SCF::get( 'bg_youtube_hasvideo' ), 'full');
+    } else {
+      $bg_video = $no_img;
+    }
+  ?>
+  <!-- begin hasvideo-->
+  <section class="hasvideo section" id="hasvideo">
+      <div class="container_center">
+          <div class="hasvideo__content">
               <div class="hasvideo__left">
-                <h2 class="section__title">Getting the right kitchen layout</h2>
-                <div class="hasvideo__img img"><img src="../../img/hasvideo_3.webp" alt="image" loading="lazy"/></div>
-                <div class="hasvideo__text">
-                  <p>Remodeling your kitchen is usually a decision you take to acquire more work space and better storage solutions. All of these problems are tied directly to a bad kitchen layout. It might be as simple as adding a new pantry unit or going as far as replacing all your kitchen cabinets with state of the art modern cabinets that can be easily accessed and utilize the available space in a better wat. Our designers can assist you with ideas for your new kitchen layout and provide you with samples for the newest cabinets and counter top materials. </p>
-                  <p>The added cabinet space can free up the cluttered of your old kitchen cabinets and the additional counter space will allow you to better utilize you kitchen work space. Another thing that is very important to remember is the appliances placement, by utilizing the classic triangle layout you can assure that your new kitchen will be easy to work in and practical for the year to come.</p>
-                </div>
+                  <?php if (SCF::get( 'hasvideo__title' )) { ?>
+                    <h2 class="section__title"><?php echo SCF::get( 'hasvideo__title' ); ?></h2>
+                  <?php } ?>
+                  <?php if (SCF::get( 'hasvideo__img' )) { $img = wp_get_attachment_image(SCF::get( 'hasvideo__img' ), 'full');  ?>
+                    <div class="hasvideo__img img"><?php echo $img; ?></div>
+                  <?php } ?>
+                  <?php if (SCF::get( 'hasvideo__text' )) { ?>
+                    <div class="hasvideo__text"><?php echo SCF::get( 'hasvideo__text' ); ?></div>
+                  <?php } ?>
               </div>
+  
               <div class="hasvideo__right">
-                <div class="hasvideo__bg img desktop"><img src="../../img/hasvideo_1.webp" alt="image" loading="lazy"/></div>
-                <div class="hasvideo__video">
-                  <div class="hasvideo__play img"><img src="../../img/hasvideo_2.webp" alt="image" loading="lazy"/>
-                    <div class="video__play youtubeModal_js" id="rsDoGqnPE4c"></div>
-                  </div>
-                </div>
+                  <div class="hasvideo__bg img desktop"><?php echo $big_img; ?></div>
+                  <?php if (SCF::get( 'id_youtube_hasvideo' )) { ?>
+                    <div class="hasvideo__video">
+                        <div class="hasvideo__play img">
+                            <?php echo $bg_video; ?>
+                            <div class="video__play youtubeModal_js" id="<?php echo SCF::get( 'id_youtube_hasvideo' ); ?>"></div>
+                        </div>
+                    </div>
+                  <?php } ?>
               </div>
-            </div>
           </div>
-        </section>
-        <!-- end hasvideo-->
+      </div>
+  </section>
+  <!-- end hasvideo-->
+<?php } ?>
