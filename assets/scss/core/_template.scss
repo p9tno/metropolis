@@ -61,6 +61,32 @@ body {
 		}
 	}
 
+	&__content {
+		margin-top: 1.25em;
+		@media (min-width: 768px) {
+			margin-top: 2.5em;
+		}
+		
+		p {
+            font-size: 0.875em;
+            font-weight: 300;
+            line-height: 1.5;
+            margin: 0.625em 0;
+            @media (min-width: 768px) {
+                font-size: 1em;
+
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+	}
+
 	&__more {
 
 		border-top: 1px solid $color_primary;

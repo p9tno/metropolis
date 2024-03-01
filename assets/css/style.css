@@ -621,6 +621,31 @@ body {
     font-size: 4.25em;
   }
 }
+.section__content {
+  margin-top: 1.25em;
+}
+@media (min-width: 768px) {
+  .section__content {
+    margin-top: 2.5em;
+  }
+}
+.section__content p {
+  font-size: 0.875em;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0.625em 0;
+}
+@media (min-width: 768px) {
+  .section__content p {
+    font-size: 1em;
+  }
+}
+.section__content p:first-child {
+  margin-top: 0;
+}
+.section__content p:last-child {
+  margin-bottom: 0;
+}
 .section__more {
   border-top: 1px solid #948D7C;
   margin-top: 2.5em;
@@ -1692,7 +1717,24 @@ body {
 }
 @media (min-width: 768px) {
   .collapse__link a {
+    position: relative;
     font-size: 1.25em;
+  }
+  .collapse__link a:before {
+    content: "";
+    position: absolute;
+    bottom: -0.75em;
+    left: 0;
+    width: 0;
+    display: block;
+    height: 0.125em;
+    background-color: #292929;
+    opacity: 0;
+    transition: 0.8s;
+  }
+  .collapse__link a:hover:before {
+    width: 100%;
+    opacity: 1;
   }
 }
 .collapse__img {

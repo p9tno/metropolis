@@ -192,8 +192,32 @@
             text-transform: uppercase;
 
             @media (min-width: 768px) {
+                position: relative;
                 font-size: 1.25em;
 
+                &:before {
+                    content: '';
+                    position: absolute;
+                    bottom: -0.75em;
+                    left: 0;
+                    width: 0;
+                    display: block;
+                    height: 0.125em;
+                    background-color: $second_color;
+                    opacity: 0;
+                    transition: 0.8s;
+            
+                
+            
+                }
+
+
+                &:hover {
+                    &:before {
+                        width: 100%;
+                        opacity: 1;
+                    }
+                }
             }
         }
     }
