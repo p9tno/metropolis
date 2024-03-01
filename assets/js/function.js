@@ -32,7 +32,7 @@ function isTouch() {
 } // for touch device
 
 window.onload = function () {
-    console.log('onload');
+    // console.log('onload');
     function preloader() {
         $(()=>{
 
@@ -52,7 +52,7 @@ window.onload = function () {
 }
 
 $(document).ready(function() {
-    console.log('ready');
+    // console.log('ready');
     window.addEventListener('resize', () => {
         // Запрещаем выполнение скриптов при смене только высоты вьюпорта (фикс для скролла в IOS и Android >=v.5)
         if (app.resized == screen.width) { return; }

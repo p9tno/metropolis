@@ -12,11 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     async function initMap() {
         const { Map } = await google.maps.importLibrary('maps');
 
-        const bounds = new google.maps.LatLngBounds();
-        mapMarkers.forEach((marker) => {
-            bounds.extend(new google.maps.LatLng(marker.position.lat, marker.position.lng));
-        });
-
         map = new Map(document.getElementById('map'), {
             center: { lat: 34.053, lng: -118.362 },
             zoom: 11,
@@ -24,7 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
             mapId: 'e87a5ee68e47b684',
         });
 
-        map.fitBounds(bounds);
+        const bounds = new google.maps.LatLngBounds();
+        mapMarkers.forEach((marker) => {
+            if (marker.position.lat && marker.position.lng) {
+                bounds.extend(new google.maps.LatLng(marker.position.lat, marker.position.lng));
+            }
+        });
+    
+        if (mapMarkers.length > 1) {
+            map.fitBounds(bounds);
+        } else {
+            map.setCenter({ lat: mapMarkers[0].position.lat, lng: mapMarkers[0].position.lng });
+        }
 
         mapMarkers.forEach(({ title, position, place, text, link, images, icon }, i) => {
             const addMarker = () => {
@@ -83,29 +89,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     onVisible( '.construction', function ( e ) {
-        console.log('initMap');
         initMap();
         document.getElementById('map').classList.add('show');
     } );
 
-    // initMap();
-
-    // if(map) {
-    //     map.setZoom(1);
-    // }
-
     function setMarkerContent(title, place, text, link, images) {
         let slides = '';
-        // images.forEach((img) => {
-        //     slides += `<div class="swiper-slide">
-        //         <div class="mark__img img">
-        //             <img
-        //                 src="${img}"
-        //                 alt=""
-        //             />
-        //         </div>
-		// 	</div>`;
-        // });
+        images.forEach((img) => {
+            slides += `<div class="swiper-slide">
+                <div class="mark__img img">
+                    <img
+                        src="${img}"
+                        alt="img"
+                    />
+                </div>
+			</div>`;
+        });
+
+        let markFoot = '';
+        if (link) {
+            markFoot = `<div class="mark__foot">
+                <a class="btn" href="${link}">
+                  <span>Do you need a similar kitchen? contact us</span></a>
+            </div>`;
+        }
+
+        let markTitle = '';
+        if (title) {
+            markTitle = `<div class="mark__title">${title}</div>`;
+        }
+
+        let markPlace = '';
+        if (place) {
+            markPlace = `<div class="mark__place">${place}</div>`;
+        }
+        let markText = '';
+        if (text) {
+            markText = `<div class="mark__text">${text}</div>`;
+        }
 
         return `<div class="mark__slider">
 
@@ -126,15 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			<div class="mark__body">
                 <div class="mark__scrolled">
-                    <div class="mark__title">${title}</div>
-                    <div class="mark__place">${place}</div>
-                    <div class="mark__text">${text}</div>
+                    ${markTitle}
+                    ${markPlace}
+                    ${markText}
                 </div>
 			</div>
-			<div class="mark__foot">
-				<a class="btn" href="${link}">
-                  <span>Do you need a similar kitchen? contact us</span></a>
-			</div>
+            ${markFoot}
 		`;
     }
 });

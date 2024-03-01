@@ -13,7 +13,7 @@ function metropolis_scripts() {
     wp_enqueue_script( 'jquery' );
 
 	if ( is_page_template(['template-homepage.php']) ){
-		// wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
+		wp_enqueue_script( 'metropolis-map', get_template_directory_uri() . '/assets/js/map.js', array(), _S_VERSION, true );
 	}
 
 	

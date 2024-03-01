@@ -113,7 +113,7 @@ function project_fields($settings, $type, $id, $meta_type, $types)
 
     if ($type === 'project' && get_page_template_slug($id) == '') {
 
-		$Section = SCF::add_setting('acf_project_map', 'Project map');
+		$Section = SCF::add_setting('acf_project_map', '<span>Project map. Go to <a href="https://www.google.com/maps/" target="_blank">www.google.com/maps/</a>, copy the coordinates. Paste into the field: "Project position" </span>');
 
         $Section->add_group(
 			'project_map',
@@ -135,31 +135,14 @@ function project_fields($settings, $type, $id, $meta_type, $types)
                     'name'        => 'project__position', // Ключ поля. Обязательный.
                     'label'       => 'Project position', // Заголовок поля.
                     'default'     => '', // Значение по умолчанию.
-                    // 'instruction' => 'Setting for map, only numbers', // Текст над полем.
                     'notes'       => '58.00491311794458, 56.20944506234034', // Текст под полем.
                 ),
-                // array(
-                //     'type'        => 'text', // Тип поля. Обязательный.
-                //     'name'        => 'project__position_lat', // Ключ поля. Обязательный.
-                //     'label'       => 'Project position lat', // Заголовок поля.
-                //     'default'     => '', // Значение по умолчанию.
-                //     'instruction' => 'Setting for map, only numbers', // Текст над полем.
-                //     'notes'       => '34.003', // Текст под полем.
-                // ),
-                // array(
-                //     'type'        => 'text', // Тип поля. Обязательный.
-                //     'name'        => 'project__position_lng', // Ключ поля. Обязательный.
-                //     'label'       => 'Project position lng', // Заголовок поля.
-                //     'default'     => '', // Значение по умолчанию.
-                //     'instruction' => 'Setting for map, only numbers', // Текст над полем.
-                //     'notes'       => '-118.252', // Текст под полем.
-                // ),
                 array(
                     'type'        => 'image', // Тип поля. Обязательный.
                     'name'        => 'project__marker', // Ключ поля. Обязательный.
                     'label'       => 'Project map marker', // Заголовок поля.
                     'size'        => 'Thumbnail', // Размер изображения в метабоксе.
-                    'instruction' => 'Setting for map, select svg', // Текст над полем.
+                    'instruction' => 'Setting for map, select svg. Optional field.', // Текст над полем.
                     'notes'       => 'Recommended sizes svg: width="60" height="60"', // Текст под полем.
                 ),
 			)

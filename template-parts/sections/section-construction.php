@@ -6,44 +6,6 @@
             <h2 class="section__title"><?php echo SCF::get( 'map__title' ); ?></h2>
         <?php } ?>
 
-        <?php 
-            // $args = array(
-            //     'post_type' => 'project',
-            //     'posts_per_page' => -1,
-            // );
-
-            // $query = new WP_Query($args);
-            // $show_in_map = 0;
-
-            // if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post();
-            //     $show_in_map = get_post_meta( get_the_ID(), 'project__boolean', true ); 
-            //     // get_pr($show_in_map);
-            //     if ($show_in_map) {
-            //         echo '<hr>';
-            //         echo the_ID() . '<br>';
-            //         $meta_title = get_post_meta( get_the_ID(), 'project__title', true );
-            //         $meta_location = get_post_meta( get_the_ID(), 'project__location', true );
-            //         $meta_link = get_post_meta( get_the_ID(), 'project__link', true );
-            //         $meta_position_lat = get_post_meta( get_the_ID(), 'project__position_lat', true );
-            //         $meta_position_lng = get_post_meta( get_the_ID(), 'project__position_lng', true );
-            //         $meta_excerpt = get_post_meta( get_the_ID(), 'project__excerpt', true );
-            //         $meta_marker = wp_get_attachment_url(get_post_meta( get_the_ID(), 'project__marker', true ));
-            //         $meta_thumb = get_post_meta( get_the_ID(), 'project__thumb', false ); 
-
-            //         echo '<b>meta_title: </b>' . $meta_title . '<br>';
-            //         echo '<b>meta_location: </b>' . $meta_location . '<br>';
-            //         echo '<b>meta_excerpt: </b>' . $meta_excerpt . '<br>';
-            //         echo '<b>meta_link: </b>' . $meta_link . '<br>';
-            //         echo '<b>meta_position_lat: </b>' . $meta_position_lat . '<br>';
-            //         echo '<b>meta_position_lng: </b>' . $meta_position_lng . '<br>';
-            //         echo '<b>meta_marker: </b>' . $meta_marker . '<br>';
-
-            //     }
-            // endwhile;
-            // endif;
-            // wp_reset_postdata();
-        ?>
-        
         <div class="construction__content">
             <div class="map__wrap" id="wrap">
                 <div class="map" id="map"></div>
@@ -53,22 +15,6 @@
                 </div>
             </div>
         </div>
-
-        <?php 
-        //   $projects = get_posts(array(
-        //     'post_type' => 'project',
-        //     'posts_per_page' => -1,
-        //     ));
-
-        //     foreach($projects as $project) {
-
-        //         $post_ID = $project->ID;
-        //         $metas = get_post_meta($post_ID);
-        //         get_pr($metas);
-        //     }
-
-
-        ?>
 
         <script>
             ((g) => {
@@ -127,8 +73,7 @@
                         $category = get_the_terms($post_ID, 'project-cat');
                         $post_meta = new StdClass();
                         $post_meta->id = $project->ID;
-                        $post_meta->content = $project->content;
-    
+                        
                         $category_arr = [];
                         if (! empty($category)) { 
                             $total = count($category);
@@ -143,11 +88,9 @@
                         $post_meta->category = $category_arr;
     
                         $post_meta->title = $metas['project__title'][0];
-                        $post_meta->location = $metas['project__location'][0];
-                        $post_meta->content = $metas['project__excerpt'][0];
-                        
-
-                       
+                        $post_meta->place = $metas['project__location'][0];
+                        $post_meta->link = $metas['project__link'][0];
+                        $post_meta->text = SCF::get( 'project__excerpt', $post_ID ); ;
                         
                         if ($metas['project__marker'][0]) {
                             $post_meta->icon = wp_get_attachment_url($metas['project__marker'][0]);
@@ -156,78 +99,25 @@
                         }
     
                         $gallery_item = [];
-                        foreach ($metas['gallery_item'] as $img_id) { 
+                        foreach ($metas['project__thumb'] as $img_id) { 
                             $img_url = wp_get_attachment_url($img_id);
                             array_push($gallery_item, $img_url);
                         }
-                        $post_meta->gallery = $gallery_item;
+                        $post_meta->images = $gallery_item;
 
-                        // $post_meta->position = [];
-
-                        // $post_meta->position 
-                        // 53.915639688200294, 27.441323686370282
-
-                        $testObject = new StdClass();
-                        $testObject->lat = 53.915639688200294;
-                        $testObject->lng = 27.441323686370282;
-                        $testObject->lat = $metas['project__position_lat'][0];
-                        $testObject->lng = $metas['project__position_lng'][0];
-                        $post_meta->position = $testObject;
-
-                        $post_meta->position = $metas['project__position'][0];
-                        $post_meta->coord = [];
-                        $addCoord = new StdClass();
-
-                        // $text = $metas['project__position'][0];
-                        // $text = preg_replace("/[^a-zа-яё0-9\s]/i", '', $text);
-                        // $array = preg_split('/(\s)/', $text);
-                        // $array = array_diff($array, array(''));
-
-                        // $post_meta->position = $array;
-                        // $addCoord->lat = $array[0];
-                        // $addCoord->lng = $array[1];
-                        // $post_meta->coord = 
-
-                        // $addCoord->lat =
-
-                        //  = $metas['project__position'][0];
+                        $position = new StdClass();
+                        $string_coord = explode(',', $metas['project__position'][0]);
+                        $position->lat = (float)$string_coord[0];
+                        $position->lng = (float)$string_coord[1];
+                        $post_meta->position = $position;
 
 
-
-
-        
-                        
-
-
-                 
-                        
                         array_push($projectMetas, $post_meta);
-
-                  
                     }
-    
                 }
-
-                ?>
-
-            
+            ?>
 
             const mapMarkers = <?php echo json_encode($projectMetas); ?>;
-
-            console.log(mapMarkers);
-
-            // const mapMarkers = allProjects.filter((e) => e.coord).map((e) => {
-            //     const {
-            //         coord
-            //     } = e;
-            //     return {
-            //         ...e,
-            //         position: {
-            //             lat: +coord.split(',')[0],
-            //             lng: +coord.split(',')[1]
-            //         },
-            //     }
-            // }) 
 
             const ram = navigator.deviceMemory;
             const cpu = navigator.hardwareConcurrency;
