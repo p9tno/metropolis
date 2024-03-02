@@ -1,69 +1,48 @@
+<?php if (SCF::get( 'boolean_service_testimonials' )) { ?>
+  <!-- begin testimonials-->
+  <section class="testimonials section" id="testimonials">
+      <div class="container_center">
+        <?php if (SCF::get( 'service_testimonials__title' )) { ?>
+          <h2 class="section__title"><?php echo SCF::get( 'service_testimonials__title' ); ?></h2>
+        <?php } ?>
 
-        <!-- begin testimonials-->
-        <section class="testimonials section" id="testimonials">
-          <div class="container_center">
-            <h2 class="section__title">Client reviews</h2>
-            <div class="testimonials__slider">
+        <?php if (SCF::get( 'relation_service_testimonials' )) { ?>
+          <div class="testimonials__slider">
               <div class="swiper testimonials_js">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="recall__grid">
-                      <div class="recall__item">
-                        <div class="recall__box">
-                          <div class="recall__text">
-                            <p>We had a total bath remodel. Our original suite bath had no wall, a sunken concrete bathtub, a large picture window that exposed us to world view while sitting. Jonathan designed a more private and modern bath with floating toilet and vanity.  From demo to completion, he checked in periodically to ensure our approval of various stages in construction.  He had a foreman who visited regularly. When we noted problems he was quick to respond. We are pleased with the result. And we love our white beveled subway tile!  Thanks Jonathan!</p>
-                          </div>
-                          <div class="recall__person">
-                            <div class="person">
-                              <div class="person__img img"><img src="../../img/person.webp" alt="image" loading="lazy"/></div>
-                              <div class="person__info">
-                                <div class="person__title">Leor & Gordon Ownby</div>
-                                <div class="person__desc">3715 Los Olivos Ln. Glendale Angeles, CA</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="recall__video">
-                          <div class="video">
-                            <div class="video__wrapper js-youtube" id="OuOXvavAy1c" style="background-image: url('../../img/recall_1.webp')">
-                              <div class="video__play"></div>
-                            </div>
-                          </div>
+                  <div class="swiper-wrapper">
+                    <?php
+                      $post_id = SCF::get( 'relation_service_testimonials' );
+                      $args = array(
+                          'post_type' => 'testimonials',
+                          'posts_per_page' => -1,
+                          'post__in' => $post_id,
+                          'orderby'   => 'post__in',
+                      );
+                      $query = new WP_Query($args);
+                    ?>
+        
+                    <?php if ($query->have_posts()) : while ($query->have_posts()) : $query->the_post(); ?>
+                      <div class="swiper-slide">
+                        <div class="recall__grid">
+                          <?php get_template_part( 'template-parts/previews/recall/preview', 'recallFull' ); ?>
                         </div>
                       </div>
-                    </div>
+                    <?php endwhile;?>
+        
+                    <?php else : ?>
+                        <p>No testimonials found</p>
+                    <?php endif; ?>
+        
+                    <?php wp_reset_postdata(); ?>
                   </div>
-                  <div class="swiper-slide">
-                    <div class="recall__grid">
-                      <div class="recall__item">
-                        <div class="recall__box">
-                          <div class="recall__text">
-                            <p>We had a total bath remodel. Our original suite bath had no wall, a sunken concrete bathtub, a large picture window that exposed us to world view while sitting. Jonathan designed a more private and modern bath with floating toilet and vanity.  From demo to completion, he checked in periodically to ensure our approval of various stages in construction.  He had a foreman who visited regularly. When we noted problems he was quick to respond. We are pleased with the result. And we love our white beveled subway tile!  Thanks Jonathan!</p>
-                          </div>
-                          <div class="recall__person">
-                            <div class="person">
-                              <div class="person__img img"><img src="../../img/person.webp" alt="image" loading="lazy"/></div>
-                              <div class="person__info">
-                                <div class="person__title">Leor & Gordon Ownby</div>
-                                <div class="person__desc">3715 Los Olivos Ln. Glendale Angeles, CA</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="recall__video">
-                          <div class="video">
-                            <div class="video__wrapper js-youtube" id="OuOXvavAy1c" style="background-image: url('../../img/recall_1.webp')">
-                              <div class="video__play"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <div class="testimonials__control"><i class="swiper-arrow icon_arrow_left swiper-arrow-dark"></i><i class="swiper-arrow icon_arrow_right swiper-arrow-dark"></i></div>
-            </div>
+              <div class="testimonials__control">
+                <i class="swiper-arrow icon_arrow_left swiper-arrow-dark"></i>
+                <i class="swiper-arrow icon_arrow_right swiper-arrow-dark"></i>
+              </div>
           </div>
-        </section>
-        <!-- end testimonials-->
+        <?php } ?>
+      </div>
+  </section>
+  <!-- end testimonials-->
+<?php } ?>

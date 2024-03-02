@@ -24,6 +24,7 @@
 	}
 
 	&__row {
+		position: relative;
 		.btn,
 		input:not([type]),
 		input[type=date],
@@ -62,6 +63,10 @@
 				background-color: #948D7C;
 				transform: rotate(-45deg);
 			}
+		}
+
+		p {
+			margin: 0;
 		}
 
 	}
@@ -127,4 +132,42 @@ input[type=number]::-webkit-outer-spin-button {
 /* Для Firefox */
 input[type=number] {
 	appearance: textfield;
+}
+
+
+
+.wpcf7 form .wpcf7-response-output {
+	margin: 1em 0 0 0;
+	border-radius: 0;
+	padding: 0;
+	border: 0;
+	font-size: 0.75em;
+	// color: red;
+	@media (min-width: 768px) {
+	  font-size: 1em;
+	}
+}
+
+.wpcf7 form {
+	&.invalid {
+		.wpcf7-response-output {
+			color: $color_warning;
+		}
+	}
+
+	&.sent {
+		.wpcf7-response-output {
+			color: $color_success;
+		}
+	}
+} 
+
+.wpcf7-not-valid-tip {
+	position: absolute;
+	left: 0;
+	bottom: -2.2em;
+	font-size: 0.75em;
+	@media (min-width: 768px) {
+	  font-size: 1em;
+	}
 }

@@ -249,6 +249,138 @@ function template_service_fields($settings, $type, $id, $meta_type, $types)
 		}
 	}
 
+    if ( $type === 'page' ) {
+		if ( get_page_template_slug( $id ) == PAGE_TEMPL_SERVICE ) {
+
+			$Setting = SCF::add_setting( 'asf_service_reverse', 'Content and img, dark background. (left: title, content; right: img;)' );
+			$Setting->add_group(
+				'service_reverse',
+				false,
+                array (
+                    array(
+                        'type'        => 'boolean', // Тип поля. Обязательный.
+                        'name'        => 'boolean_reverse', // Ключ поля. Обязательный.
+                        'label'       => 'Display block?', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'true_label'  => 'Yes', // Текст радио-кнопки (true)
+                        'false_label' => 'No', // Текст радио-кнопки (false)
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'reverse__title', // Ключ поля. Обязательный.
+                        'label'       => 'Title', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'wysiwyg', // Тип поля. Обязательный.
+                        'name'        => 'reverse__text', // Ключ поля. Обязательный.
+                        'label'       => 'Content', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'image', // Тип поля. Обязательный.
+                        'name'        => 'reverse__img', // Ключ поля. Обязательный.
+                        'label'       => 'image', // Заголовок поля.
+                        'size'        => 'medium', // Размер изображения в метабоксе.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),
+                   
+				) 
+			
+			);
+
+			$settings[] = $Setting;
+		}
+	}
+
+    if ( $type === 'page' ) {
+		if ( get_page_template_slug( $id ) == PAGE_TEMPL_SERVICE ) {
+
+			$Setting = SCF::add_setting( 'asf_service_testimonials', 'Client reviews' );
+			$Setting->add_group(
+				'service_testimonials',
+				false,
+                array (
+                    array(
+                        'type'        => 'boolean', // Тип поля. Обязательный.
+                        'name'        => 'boolean_service_testimonials', // Ключ поля. Обязательный.
+                        'label'       => 'Display block?', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'true_label'  => 'Yes', // Текст радио-кнопки (true)
+                        'false_label' => 'No', // Текст радио-кнопки (false)
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'service_testimonials__title', // Ключ поля. Обязательный.
+                        'label'       => 'Title', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => 'Client reviews', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'relation', // Тип поля. Обязательный.
+                        'name'        => 'relation_service_testimonials', // Ключ поля. Обязательный.
+                        'label'       => 'Select testimonials', // Заголовок поля.
+                        'post-type'   => array('testimonials'), // Типы записей.
+                        'limit'       => -1, // Максимальное количество выбираемых элементов.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),
+    
+				) 
+			
+			);
+
+			$settings[] = $Setting;
+		}
+	}
+
+    if ( $type === 'page' ) {
+		if ( get_page_template_slug( $id ) == PAGE_TEMPL_SERVICE ) {
+
+			$Setting = SCF::add_setting( 'asf_service_consult', 'Consult' );
+			$Setting->add_group(
+				'service_consult',
+				false,
+                array (
+                    array(
+                        'type'        => 'boolean', // Тип поля. Обязательный.
+                        'name'        => 'boolean_consult', // Ключ поля. Обязательный.
+                        'label'       => 'Display block?', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'true_label'  => 'Yes', // Текст радио-кнопки (true)
+                        'false_label' => 'No', // Текст радио-кнопки (false)
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'consult__title', // Ключ поля. Обязательный.
+                        'label'       => 'Title', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => 'Consult with a designer today', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'consult__link', // Ключ поля. Обязательный.
+                        'label'       => 'Link', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => 'contact-us', // Текст под полем.
+                    ),
+        
+				) 
+			
+			);
+
+			$settings[] = $Setting;
+		}
+	}
+
 	return $settings;
 }
 add_filter('smart-cf-register-fields', 'template_service_fields', 10, 5);

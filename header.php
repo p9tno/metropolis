@@ -11,8 +11,11 @@
 <!-- start body -->
 <body <?php body_class(); ?>>
 
-	<?php wp_body_open(); ?>
+	<?php if (SCF::get_option_meta('my-theme-settings', 'boolean_preloader')) { ?>
+		<?php get_template_part( 'template-parts/parts/part', 'preloader' ); ?>
+	<?php } ?>
 
+	<?php wp_body_open(); ?>
 
 	<!-- start wrapper-->
 	<div class="wrapper" id="wrapper">

@@ -32,7 +32,7 @@ function isTouch() {
 } // for touch device
 
 window.onload = function () {
-    // console.log('onload');
+    console.log('onload');
     function preloader() {
         $(()=>{
 
@@ -48,7 +48,6 @@ window.onload = function () {
         });
     }
     preloader();
-    // setTimeout( ()=> preloader(),15000 )
 }
 
 $(document).ready(function() {
@@ -89,25 +88,6 @@ $(document).ready(function() {
         });
     };
     scroolTo();
-
-    function showModal() {
-        $('.show_modal_js').on('click', function (e) {
-            e.preventDefault();
-            let id  = $(this).attr('href');
-
-            $(id).modal('show');
-        });
-
-        $('.modal').on('show.bs.modal', () => {
-            // let openedModal = $('.modal.in:not(.popapCalc)');
-            let openedModal = $('.modal');
-            if (openedModal.length > 0) {
-                openedModal.modal('hide');
-            }
-        });
-    }
-    // showModal();
-
 
     function openMobileNav() {
         $('.header__toggle').click(function(event) {

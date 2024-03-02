@@ -23,7 +23,7 @@ class Kama_Breadcrumbs {
 	static $l10n = array(
 		'home'       => 'Home',
 		'paged'      => 'Страница %d',
-		'_404'       => 'Ошибка 404',
+		'_404'       => 'Error 404',
 		// 'search'     => 'Результаты поиска по запросу - <b>%s</b>',
 		'author'     => 'Архив автора: <b>%s</b>',
 		'year'       => 'Архив за <b>%d</b> год',

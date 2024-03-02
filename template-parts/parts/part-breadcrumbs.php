@@ -1,5 +1,6 @@
 <?php if (
-    !is_page_template(['template-homepage.php'])
+    !is_page_template(['template-homepage.php']) &&
+    !is_404()
     ) { ?>
     <!-- begin breadcrumbs-->
     <div class="breadcrumbs section">

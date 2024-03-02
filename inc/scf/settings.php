@@ -88,6 +88,16 @@ function global_theme_settings($settings, $type, $id, $meta_type, $types)
 					'instruction' => '', // Текст над полем.
 					'notes'       => '', // Текст под полем.
 				),
+				array(
+					'type'        => 'boolean', // Тип поля. Обязательный.
+					'name'        => 'boolean_preloader', // Ключ поля. Обязательный.
+					'label'       => 'Show preloader?', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+					'true_label'  => 'Yes', // Текст радио-кнопки (true)
+					'false_label' => 'No', // Текст радио-кнопки (false)
+				),
 			)
 		);
 

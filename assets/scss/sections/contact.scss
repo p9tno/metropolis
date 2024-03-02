@@ -25,6 +25,16 @@
             width: 35.875em;
         }
 
+        p {
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
     }
 
     &__content {
