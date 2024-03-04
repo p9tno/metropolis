@@ -89,9 +89,13 @@
 
                     .portfolio__locatin {
                         display: block;
-                        @media (max-width: 767px) {
-                            &:after {
-                                content: none;
+              
+                        &:after {
+                            content: '\e900';
+                            right: 0;
+                            @media (min-width: 768px) {
+                                font-size: 1.1em;
+                              
                             }
                         }
                     }

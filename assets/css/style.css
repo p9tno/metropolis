@@ -1972,9 +1972,13 @@ body {
 .portfolio__item:nth-child(5n+1) .portfolio__content .portfolio__box .portfolio__locatin {
   display: block;
 }
-@media (max-width: 767px) {
+.portfolio__item:nth-child(5n+1) .portfolio__content .portfolio__box .portfolio__locatin:after {
+  content: "";
+  right: 0;
+}
+@media (min-width: 768px) {
   .portfolio__item:nth-child(5n+1) .portfolio__content .portfolio__box .portfolio__locatin:after {
-    content: none;
+    font-size: 1.1em;
   }
 }
 .portfolio__item:nth-child(5n+1) .portfolio__content .portfolio__title:after {
@@ -4200,7 +4204,7 @@ input[type=number] {
   .project__scrolled {
     overflow: hidden overlay;
     height: 46.9375em;
-    padding-right: 0.5em;
+    padding-right: 0.875em;
   }
   .project__scrolled::-webkit-scrollbar {
     width: 1.25em;
