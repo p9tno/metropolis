@@ -1346,6 +1346,8 @@ body {
 .construction .section__title {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: none;
 }
 @media (max-width: 767px) {
   .construction .section__title {
@@ -1354,10 +1356,19 @@ body {
   }
 }
 .construction .section__title span {
-  flex-grow: 1;
   height: 1px;
   background-color: #292929;
   margin: 0 0.294em;
+  flex-grow: 1;
+}
+@media (min-width: 768px) {
+  .construction .section__title span {
+    transition: 1s;
+    flex-grow: 0;
+  }
+  .construction .section__title span.show {
+    flex-grow: 1;
+  }
 }
 @media (min-width: 768px) {
   .construction {
@@ -3534,13 +3545,14 @@ input[type=number] {
 
 .preloader {
   position: relative;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  grid-gap: 0.125em;
-  width: 6.25em;
-  height: 6.25em;
-  margin: 1.875em auto;
-  font-size: 0.5em;
+  display: block;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  border: 0.188em solid transparent;
+  border-top-color: rgba(82, 77, 67, 0.75);
+  animation: preloader-5-spin 2s linear infinite;
+  font-size: 0.375em;
 }
 .preloader__wrap {
   position: fixed;
@@ -3559,56 +3571,40 @@ input[type=number] {
 }
 @media (min-width: 768px) {
   .preloader {
-    font-size: 1em;
+    font-size: 0.675em;
   }
 }
-
-.preloader > div {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #292929;
-  transform: scale(0);
-  transform-origin: center center;
-  animation: preloader-4-anim 2s infinite linear;
+.preloader:before {
+  content: "";
+  position: absolute;
+  top: 0.375em;
+  left: 0.375em;
+  right: 0.375em;
+  bottom: 0.375em;
+  border-radius: 50%;
+  border: 0.188em solid transparent;
+  border-top-color: rgba(82, 77, 67, 0.5);
+  animation: preloader-5-spin 3s linear infinite;
+}
+.preloader:after {
+  content: "";
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  right: 1em;
+  bottom: 1em;
+  border-radius: 50%;
+  border: 0.188em solid transparent;
+  border-top-color: #524d43;
+  animation: preloader-5-spin 1.5s linear infinite;
 }
 
-.preloader > div:nth-of-type(1),
-.preloader > div:nth-of-type(5),
-.preloader > div:nth-of-type(9) {
-  animation-delay: 0.4s;
-  opacity: 0.9;
-}
-
-.preloader > div:nth-of-type(4),
-.preloader > div:nth-of-type(8) {
-  animation-delay: 0.2s;
-  opacity: 0.95;
-}
-
-.preloader > div:nth-of-type(2),
-.preloader > div:nth-of-type(6) {
-  animation-delay: 0.6s;
-  opacity: 0.85;
-}
-
-.preloader > div:nth-of-type(3) {
-  animation-delay: 0.8s;
-  opacity: 0.8;
-}
-
-@keyframes preloader-4-anim {
+@keyframes preloader-5-spin {
   0% {
-    transform: scale(0);
-  }
-  40% {
-    transform: scale(1);
-  }
-  80% {
-    transform: scale(1);
+    transform: rotate(0deg);
   }
   100% {
-    transform: scale(0);
+    transform: rotate(360deg);
   }
 }
 .preloaderFilter {
@@ -3636,14 +3632,14 @@ input[type=number] {
   transition: 0.3s;
   opacity: 1;
   display: none;
-  font-size: 0.5em;
+  font-size: 0.375em;
 }
 .preloaderFilter__wrap.active {
   opacity: 1;
 }
 @media (min-width: 768px) {
   .preloaderFilter__wrap {
-    font-size: 1em;
+    font-size: 0.675em;
   }
 }
 @media (min-width: 768px) {

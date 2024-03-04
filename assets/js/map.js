@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const marker = new google.maps.Marker({
                     icon: icon,
                     position,
-                    animation: google.maps.Animation.DROP,
+                    // animation: google.maps.Animation.DROP,
                     map,
                     title,
                     optimized: false,
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             };
 
-            setTimeout(addMarker, 500 * i);
+            setTimeout(addMarker, 100 * i);
         });
 
     }

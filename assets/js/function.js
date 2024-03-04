@@ -142,6 +142,36 @@ $(document).ready(function() {
         })
     }
 
+   
+    function onVisible( selector, callback, repeat = false ) {
+    let options = {
+        threshold: [ 0.5 ]
+    };
+    let observer = new IntersectionObserver( onEntry, options );
+    let elements = document.querySelectorAll( selector );
+
+    for ( let elm of elements ) {
+        observer.observe( elm );
+    }
+
+    function onEntry( entry ) {
+        entry.forEach( change => {
+            let elem = change.target;
+            // console.log(change);
+            // console.log(elem.innerHTML);
+            if ( change.isIntersecting ) {
+                if ( !elem.classList.contains( 'show' ) || repeat ) {
+                    elem.classList.add( 'show' );
+                    callback( elem );
+                }
+            }
+        } );
+    }
+    }
+
+    onVisible( '.section_title_line_js', function ( e ) {} );
+
+
     // Видео youtube для страницы
     function uploadYoutubeVideo() {
         if ( $( ".js-youtube" ) ) {
