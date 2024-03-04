@@ -851,7 +851,7 @@ body {
     animation-fill-mode: forwards;
   }
 
-  .fade {
+  .animate_fade {
     opacity: 0;
     position: relative;
     z-index: 10;
@@ -859,7 +859,7 @@ body {
     animation-delay: 1s;
     animation-fill-mode: forwards;
   }
-  .fade.delay_0 {
+  .animate_fade.delay_0 {
     animation-delay: 0s;
   }
 }

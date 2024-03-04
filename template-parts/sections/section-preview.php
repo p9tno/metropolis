@@ -9,7 +9,7 @@
             <div class="preview__content">
                 <div class="preview__caption">
                     <?php if (SCF::get( 'preview_title' )) { ?>
-                        <h1 class="section__title fade fade_top_js"><?php echo SCF::get( 'preview_title' ); ?></h1>
+                        <h1 class="section__title animate_fade fade_top_js"><?php echo SCF::get( 'preview_title' ); ?></h1>
                     <?php } ?>
                     <?php if (SCF::get( 'preview_desc' )) { ?>
                         <div class="preview__desc"><?php echo SCF::get( 'preview_desc' ); ?></div>

@@ -6,7 +6,7 @@
 <section class="portfolio section" id="portfolio">
     <div class="container_center">
      
-        <h1 class="section__title fade fade_top_js"><?php the_title(); ?></h1>
+        <h1 class="section__title animate_fade fade_top_js"><?php the_title(); ?></h1>
 
         <?php echo my_cat_list_filter(
             $post_type = 'project',

@@ -17,15 +17,15 @@
   <section class="hasvideo section" id="hasvideo">
       <div class="container_center">
           <div class="hasvideo__content">
-              <div class="hasvideo__left fade delay_0 fade_scroll_js">
+              <div class="hasvideo__left">
                   <?php if (SCF::get( 'hasvideo__title' )) { ?>
-                    <h2 class="section__title"><?php echo SCF::get( 'hasvideo__title' ); ?></h2>
+                    <h2 class="section__title animate_fade delay_0 fade_scroll_js"><?php echo SCF::get( 'hasvideo__title' ); ?></h2>
                   <?php } ?>
                   <?php if (SCF::get( 'hasvideo__img' )) { $img = wp_get_attachment_image(SCF::get( 'hasvideo__img' ), 'full');  ?>
-                    <div class="hasvideo__img img"><?php echo $img; ?></div>
+                    <div class="hasvideo__img img animate_fade delay_0 fade_scroll_js"><?php echo $img; ?></div>
                   <?php } ?>
                   <?php if (SCF::get( 'hasvideo__text' )) { ?>
-                    <div class="hasvideo__text"><?php echo SCF::get( 'hasvideo__text' ); ?></div>
+                    <div class="hasvideo__text animate_fade delay_0 fade_scroll_js"><?php echo SCF::get( 'hasvideo__text' ); ?></div>
                   <?php } ?>
               </div>
   

@@ -4,7 +4,7 @@
     ) { ?>
     <!-- begin breadcrumbs-->
     <div class="breadcrumbs section">
-        <div class="container_center fade fade_top_js">
+        <div class="container_center animate_fade fade_top_js">
             <?php kama_breadcrumbs('&nbsp;|'); ?>
         </div>
     </div>

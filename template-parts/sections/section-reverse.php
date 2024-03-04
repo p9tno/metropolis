@@ -5,10 +5,10 @@
           <div class="container_center">
               <div class="reverse__content">
                   <?php if (SCF::get( 'reverse__title' )) { ?>
-                    <h2 class="section__title fade delay_0 fade_scroll_js"><?php echo SCF::get( 'reverse__title' ); ?></h2>
+                    <h2 class="section__title animate_fade delay_0 fade_scroll_js"><?php echo SCF::get( 'reverse__title' ); ?></h2>
                   <?php } ?>
                   <?php if (SCF::get( 'reverse__text' )) { ?>
-                    <div class="reverse__text fade delay_0 fade_scroll_js"><?php echo SCF::get( 'reverse__text' ); ?></div>
+                    <div class="reverse__text animate_fade delay_0 fade_scroll_js"><?php echo SCF::get( 'reverse__text' ); ?></div>
                   <?php } ?>
               </div>
           </div>

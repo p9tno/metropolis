@@ -11,7 +11,7 @@
 <section class="contact section" id="contact">
     <div class="container_center">
         <div class="contact__head">
-            <h1 class="section__title fade fade_top_js"><?php the_title(); ?></h1>
+            <h1 class="section__title animate_fade fade_top_js"><?php the_title(); ?></h1>
             <?php if (SCF::get( 'contacts__text' )) { ?>
                 <div class="contact__desc"><?php echo SCF::get( 'contacts__text' ); ?></div>
             <?php } ?>

@@ -112,9 +112,9 @@ $(document).ready(function() {
           event.preventDefault();
           // let id  = $(this).attr('data-modal');
           let clickId  = $(this).attr('id');
-        //   console.log('clickId', clickId);
+          console.log('clickId', clickId);
     
-        //   console.log('modalData : ', modalData[clickId][0]);
+          console.log('modalData : ', modalData[clickId][0]);
     
           const id = modalData[clickId][0].id; 
           const cat = modalData[clickId][0].category;
@@ -130,7 +130,7 @@ $(document).ready(function() {
           initProjectSlider();
     
           $('#project').modal('show');
-        //   console.log(modalData);
+          console.log(modalData);
         });
       
         $('.modal').on('hide.bs.modal', () => {
@@ -139,6 +139,7 @@ $(document).ready(function() {
         });
       
         function setModalContent(cat, title, location, text, link, images, recall) {
+            console.log('setModalContent');
             let sliderDiv = '';
             if (images[0].url != false) {
               let slides = '';

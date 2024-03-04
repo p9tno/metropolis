@@ -3,7 +3,7 @@
   <section class="testimonials section" id="testimonials">
       <div class="container_center">
         <?php if (SCF::get( 'service_testimonials__title' )) { ?>
-          <h2 class="section__title fade delay_0 fade_scroll_js"><?php echo SCF::get( 'service_testimonials__title' ); ?></h2>
+          <h2 class="section__title animate_fade delay_0 fade_scroll_js"><?php echo SCF::get( 'service_testimonials__title' ); ?></h2>
         <?php } ?>
 
         <?php if (SCF::get( 'relation_service_testimonials' )) { ?>

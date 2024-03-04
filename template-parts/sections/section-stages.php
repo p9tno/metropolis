@@ -5,7 +5,7 @@
           <div class="stages__content counter-wrap">
 
             <?php if (SCF::get( 'stages_section_title' )) { ?>
-              <h2 class="section__title fade delay_0 fade_scroll_js"><?php echo SCF::get( 'stages_section_title' ); ?></h2>
+              <h2 class="section__title animate_fade delay_0 fade_scroll_js"><?php echo SCF::get( 'stages_section_title' ); ?></h2>
             <?php } ?>
 
             <?php $row = SCF::get('stages_list');
