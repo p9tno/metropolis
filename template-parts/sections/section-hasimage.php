@@ -4,13 +4,13 @@
       <div class="container_center">
           <div class="hasimage__content">
             <?php if (SCF::get( 'hasimage__title' )) { ?>
-              <h2 class="section__title"><?php echo SCF::get( 'hasimage__title' ); ?></h2>
+              <h2 class="section__title fade delay_0 fade_scroll_js"><?php echo SCF::get( 'hasimage__title' ); ?></h2>
             <?php } ?>
             <?php if (SCF::get( 'hasimage__img' )) { $img = wp_get_attachment_image(SCF::get( 'hasimage__img' ), 'full'); ?>
               <div class="hasimage__img img"><?php echo $img; ?></div>
             <?php } ?>
             <?php if (SCF::get( 'hasimage__text' )) { ?>
-              <div class="hasimage__text"><?php echo SCF::get( 'hasimage__text' ); ?></div>
+              <div class="hasimage__text fade delay_0 fade_scroll_js"><?php echo SCF::get( 'hasimage__text' ); ?></div>
             <?php } ?>
           </div>
       </div>

@@ -2,7 +2,7 @@
   <!-- begin consult-->
   <section class="consult section" id="consult">
       <div class="container_center">
-          <div class="consult__content">
+          <div class="consult__content fade delay_0 fade_scroll_js">
             <?php if (SCF::get( 'consult__title' )) { ?>
               <h2 class="section__title"><?php echo SCF::get( 'consult__title' ); ?></h2>
             <?php } ?>

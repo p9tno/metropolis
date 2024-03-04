@@ -42,12 +42,54 @@ window.onload = function () {
 
                 setTimeout( () => {
                     p.remove()
-                },1000);
+                },700);
 
             },1000);
         });
     }
     preloader();
+
+    function initAnimateGallery() {
+        $('.fade_down_big_js').addClass('fadeInDownBig');
+        let img = $('.fade_down_big_js').find('img');
+        img.addClass('zoomOutGallery');
+        setTimeout( () => {
+            img.removeClass('zoomOutGallery');
+        },3000);
+    }
+    initAnimateGallery();
+
+    function initAnimateTop () {
+        $('.fade_top_js').addClass('fadeInDown');
+    }
+    initAnimateTop ();
+
+
+    onVisible( '.fade_scroll_js', function ( e ) {} );
+
+    function onVisible( selector, callback, repeat = false ) {
+        let options = {
+            threshold: [ 0, 0.5 ]
+        };
+        let observer = new IntersectionObserver( onEntry, options );
+        let elements = document.querySelectorAll( selector );
+
+        for ( let elm of elements ) {
+            observer.observe( elm );
+        }
+
+        function onEntry( entry ) {
+            entry.forEach( change => {
+                let elem = change.target;
+                if ( change.isIntersecting ) {
+                    if ( !elem.classList.contains( 'show' ) || repeat ) {
+                        elem.classList.add( 'show' );
+                        callback( elem );
+                    }
+                }
+            } );
+        }
+    }
 }
 
 $(document).ready(function() {
@@ -141,36 +183,6 @@ $(document).ready(function() {
 
         })
     }
-
-   
-    function onVisible( selector, callback, repeat = false ) {
-    let options = {
-        threshold: [ 0.5 ]
-    };
-    let observer = new IntersectionObserver( onEntry, options );
-    let elements = document.querySelectorAll( selector );
-
-    for ( let elm of elements ) {
-        observer.observe( elm );
-    }
-
-    function onEntry( entry ) {
-        entry.forEach( change => {
-            let elem = change.target;
-            // console.log(change);
-            // console.log(elem.innerHTML);
-            if ( change.isIntersecting ) {
-                if ( !elem.classList.contains( 'show' ) || repeat ) {
-                    elem.classList.add( 'show' );
-                    callback( elem );
-                }
-            }
-        } );
-    }
-    }
-
-    onVisible( '.section_title_line_js', function ( e ) {} );
-
 
     // Видео youtube для страницы
     function uploadYoutubeVideo() {

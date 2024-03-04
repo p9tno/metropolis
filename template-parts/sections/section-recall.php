@@ -2,7 +2,7 @@
 <section class="recall section" id="recall">
     <div class="container_center">
         <?php if (SCF::get( 'testimonials__title' )) { ?>
-            <h1 class="section__title"><?php echo SCF::get( 'testimonials__title' ); ?></h1>
+            <h1 class="section__title fade fade_top_js"><?php echo SCF::get( 'testimonials__title' ); ?></h1>
         <?php } ?>
 
         <?php if (SCF::get( 'testimonials__relation' )) { ?>

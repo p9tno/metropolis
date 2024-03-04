@@ -2,7 +2,7 @@
   <!-- begin done-->
   <section class="done section" id="done">
     <div class="container_center">
-      <div class="done__content">
+      <div class="done__content fade fade_scroll_js">
           <?php if (SCF::get( 'done__title' )) { ?>
             <h2 class="section__title"><?php echo SCF::get( 'done__title' ); ?></h2>
           <?php } ?>

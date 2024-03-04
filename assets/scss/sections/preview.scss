@@ -241,17 +241,17 @@ $animation-duration: 2s;
 
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 150%, 0);
-    }
+// @keyframes fadeInUp {
+//     from {
+//         opacity: 0;
+//         transform: translate3d(0, 150%, 0);
+//     }
 
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
+//     to {
+//         opacity: 1;
+//         transform: translate3d(0, 0, 0);
+//     }
+// }
 
 @keyframes zoomOut {
     from {
