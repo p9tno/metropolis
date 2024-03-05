@@ -2712,18 +2712,8 @@ body {
 }
 @media (min-width: 768px) {
   .done .section__title {
-    position: relative;
     width: 12em;
     padding-bottom: 0.5em;
-  }
-  .done .section__title:before {
-    content: "";
-    font-family: "icon";
-    display: inline-block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size: 0.24em;
   }
 }
 @media (min-width: 768px) {
