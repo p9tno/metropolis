@@ -23,6 +23,7 @@ jQuery(function($){
             },
             complete: function() {
                 uploadYoutubeVideo();
+                videoPlayer();
             },
             success:function(data){
                 if (data) {
@@ -63,5 +64,22 @@ jQuery(function($){
             } );
         }
     };
+
+    function videoPlayer() {
+        $('.player__play').on('click', function (e) {
+            // e.preventDefault();
+            let videoContainer = $(this).closest('.player');
+            let video = videoContainer.find('video')[0];
+            if (video.paused) {
+                video.play();
+                videoContainer.addClass('video-is-playing');
+            } else {
+                video.pause();
+                videoContainer.removeClass('video-is-playing');
+                video.load();
+            }
+
+        });
+    }
 
 });
