@@ -31,14 +31,23 @@
   
               <div class="hasvideo__right">
                   <div class="hasvideo__bg img desktop"><?php echo $big_img; ?></div>
-                  <?php if (SCF::get( 'id_youtube_hasvideo' )) { ?>
+
+                  <?php if (SCF::get( 'radio_hasvideo' ) === 'video_youtube') { ?>
                     <div class="hasvideo__video">
                         <div class="hasvideo__play img">
                             <?php echo $bg_video; ?>
                             <div class="video__play youtubeModal_js" id="<?php echo SCF::get( 'id_youtube_hasvideo' ); ?>"></div>
                         </div>
                     </div>
-                  <?php } ?>
+                  <?php } elseif (SCF::get( 'radio_hasvideo' ) === 'src_player') { ?>
+                    <div class="hasvideo__video">
+                        <div class="hasvideo__play img">
+                          <?php echo $bg_video; ?>
+                          <div class="video__play playerModal_js" data-src="<?php echo SCF::get( 'src_player_hasvideo' ); ?>"></div>
+                        </div>
+                    </div>
+                  <?php } else {} ?>
+
               </div>
           </div>
       </div>

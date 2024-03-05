@@ -94,12 +94,17 @@ function template_service_fields($settings, $type, $id, $meta_type, $types)
                         'notes'       => '', // Текст под полем.
                     ),
                     array(
-                        'type'        => 'text', // Тип поля. Обязательный.
-                        'name'        => 'id_youtube_hasvideo', // Ключ поля. Обязательный.
-                        'label'       => 'ID video', // Заголовок поля.
-                        'default'     => '', // Значение по умолчанию.
-                        'instruction' => 'ID is the set of characters after "watch?v=" in the browser line. As an example from the line https://www.youtube.com/watch?v=yCChjRhpV64 , id= yCChjRhpV64', // Текст над полем.
-                        'notes'       => 'yCChjRhpV64', // Текст под полем.
+                        'type'            => 'radio', // Тип поля. Обязательный.
+                        'name'            => 'radio_hasvideo', // Ключ поля. Обязательный.
+                        'label'           => 'Select video source', // Заголовок поля.
+                        'choices'         => array( // Массив с вариантами выбора.
+                            'no_video' => 'no video',
+                            'video_youtube' => 'youtube',
+                            'src_player' => 'player',
+                        ),
+                        'radio_direction' => 'horizontal', // или vertical. Вариант отображения пунктов.
+                        'default'         => 'no_video', // Значение по умолчанию.
+                        'notes'           => '', // Текст под полем.
                     ),
                     array(
                         'type'        => 'image', // Тип поля. Обязательный.
@@ -108,6 +113,22 @@ function template_service_fields($settings, $type, $id, $meta_type, $types)
                         'size'        => 'thumbnail', // Размер изображения в метабоксе.
                         'instruction' => '', // Текст над полем.
                         'notes'       => '', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'id_youtube_hasvideo', // Ключ поля. Обязательный.
+                        'label'       => 'ID video', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => 'ID is the set of characters after "watch?v=" in the browser line. As an example from the line https://www.youtube.com/watch?v=yCChjRhpV64 , id= yCChjRhpV64', // Текст над полем.
+                        'notes'       => 'yCChjRhpV64', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'src_player_hasvideo', // Ключ поля. Обязательный.
+                        'label'       => 'Form link to video', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => 'upload the file to media, copy the link to it and paste it into the field', // Текст над полем.
+                        'notes'       => 'Example: /wp-content/uploads/filename', // Текст под полем.
                     ),
                     array(
                         'type'        => 'text', // Тип поля. Обязательный.
