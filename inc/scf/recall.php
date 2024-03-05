@@ -41,12 +41,34 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
 	}
     if ($type === 'testimonials' && get_page_template_slug($id) == '') {
 
-		$Section = SCF::add_setting('acf_testimonials_youtube', '<span>Testimonials youtube. If you fill out this block, all other data will <span style="color:#517DC0;">not be displayed</span>. Only 1 and every 9 elements оn the testimonials page.</span>');
+		$Section = SCF::add_setting('acf_testimonials_youtube', '<span>Testimonials video.');
 
 		$Section->add_group(
 			'testimonials-video',
 			false,
 			array(
+                array(
+                    'type'        => 'image', // Тип поля. Обязательный.
+                    'name'        => 'bg_youtube_video', // Ключ поля. Обязательный.
+                    'label'       => 'Background video', // Заголовок поля.
+                    'size'        => 'thumbnail', // Размер изображения в метабоксе.
+                    'instruction' => '', // Текст над полем.
+                    'notes'       => '', // Текст под полем.
+                ),
+                array(
+                    'type'            => 'radio', // Тип поля. Обязательный.
+                    'name'            => 'radio_video', // Ключ поля. Обязательный.
+                    'label'           => 'Select video source', // Заголовок поля.
+                    'choices'         => array( // Массив с вариантами выбора.
+                        'no_video' => 'no video',
+                        'video_youtube' => 'youtube',
+                        'src_player' => 'player',
+                    ),
+                    'radio_direction' => 'horizontal', // или vertical. Вариант отображения пунктов.
+                    'default'         => 'no_video', // Значение по умолчанию.
+                    'instruction'     => 'If you fill out this field, all other data will not be displayed. Only 1 and every 9 elements оn the testimonials page.', // Текст над полем.
+                    'notes'           => '', // Текст под полем.
+                ),
                 array(
                     'type'        => 'text', // Тип поля. Обязательный.
                     'name'        => 'id_youtube_video', // Ключ поля. Обязательный.
@@ -56,12 +78,12 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
                     'notes'       => 'yCChjRhpV64', // Текст под полем.
                 ),
                 array(
-                    'type'        => 'image', // Тип поля. Обязательный.
-                    'name'        => 'bg_youtube_video', // Ключ поля. Обязательный.
-                    'label'       => 'Background video', // Заголовок поля.
-                    'size'        => 'thumbnail', // Размер изображения в метабоксе.
-                    'instruction' => '', // Текст над полем.
-                    'notes'       => '', // Текст под полем.
+                    'type'        => 'text', // Тип поля. Обязательный.
+                    'name'        => 'src_player_video', // Ключ поля. Обязательный.
+                    'label'       => 'Form link to video', // Заголовок поля.
+                    'default'     => '', // Значение по умолчанию.
+                    'instruction' => 'upload the file to media, copy the link to it and paste it into the field', // Текст над полем.
+                    'notes'       => 'Example: /wp-content/uploads/filename', // Текст под полем.
                 ),
   
 			)

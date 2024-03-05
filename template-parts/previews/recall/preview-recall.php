@@ -1,8 +1,12 @@
 <div class="recall__item">
     
-    <?php if (SCF::get( 'id_youtube_video' )) { ?>
+    <?php if (SCF::get( 'radio_video' ) === 'video_youtube') { ?>
 
         <?php include 'parts/video.php'; ?>
+
+    <?php } elseif (SCF::get( 'radio_video' ) === 'src_player') { ?>
+
+        <?php include 'parts/player.php'; ?>
 
     <?php } else { ?>
 

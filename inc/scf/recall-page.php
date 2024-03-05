@@ -22,15 +22,15 @@ function template_testimonials_fields($settings, $type, $id, $meta_type, $types)
                         'instruction' => '', // Текст над полем.
                         'notes'       => '', // Текст под полем.
                     ),
-					array(
-						'type'        => 'relation', // Тип поля. Обязательный.
-						'name'        => 'testimonials__relation', // Ключ поля. Обязательный.
-						'label'       => 'Field with a selection of related records', // Заголовок поля.
-						'post-type'   => array('testimonials'), // Типы записей.
-						'limit'       => -1, // Максимальное количество выбираемых элементов.
-						'instruction' => '', // Текст над полем.
-						'notes'       => '', // Текст под полем.
-					),
+					// array(
+					// 	'type'        => 'relation', // Тип поля. Обязательный.
+					// 	'name'        => 'testimonials__relation', // Ключ поля. Обязательный.
+					// 	'label'       => 'Field with a selection of related records', // Заголовок поля.
+					// 	'post-type'   => array('testimonials'), // Типы записей.
+					// 	'limit'       => -1, // Максимальное количество выбираемых элементов.
+					// 	'instruction' => '', // Текст над полем.
+					// 	'notes'       => '', // Текст под полем.
+					// ),
 				) 
 			);
 
