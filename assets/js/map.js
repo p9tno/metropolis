@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link) {
             markFoot = `<div class="mark__foot">
                 <a class="btn" href="${link}">
-                  <span>Do you need a similar kitchen? contact us</span></a>
+                  <span>Contact us today to get started on your project.</span></a>
             </div>`;
         }
 
