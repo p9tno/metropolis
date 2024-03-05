@@ -67,7 +67,8 @@ jQuery(function($){
 
     function videoPlayer() {
         $('.player__play').on('click', function (e) {
-            // e.preventDefault();
+            e.preventDefault();
+            // console.log('player__play loadmore js');
             let videoContainer = $(this).closest('.player');
             let video = videoContainer.find('video')[0];
             if (video.paused) {

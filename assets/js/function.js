@@ -32,7 +32,7 @@ function isTouch() {
 } // for touch device
 
 window.onload = function () {
-    console.log('onload');
+    // console.log('onload');
     function preloader() {
         $(()=>{
 
@@ -252,7 +252,8 @@ $(document).ready(function() {
 
     function videoPlayer() {
         $('.player__play').on('click', function (e) {
-            // e.preventDefault();
+            e.preventDefault();
+            // console.log('player__play function js');
             let videoContainer = $(this).closest('.player');
             let video = videoContainer.find('video')[0];
             if (video.paused) {
