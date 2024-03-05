@@ -43,7 +43,7 @@
                     <div class="hasvideo__video">
                         <div class="hasvideo__play img">
                           <?php echo $bg_video; ?>
-                          <div class="video__play playerModal_js" data-src="<?php echo SCF::get( 'src_player_hasvideo' ); ?>"></div>
+                          <div class="video__play playerModal_js" data-src="<?php echo wp_get_attachment_url(SCF::get( 'src_player_hasvideo' )); ?>"></div>
                         </div>
                     </div>
                   <?php } else {} ?>

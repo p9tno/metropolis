@@ -19,7 +19,7 @@
                 controls 
                 allowfullscreen="true" 
                 playsinline="playsinline">
-                <source src="<?php echo SCF::get( 'src_player_video' ); ?>" type="video/mp4" />
+                <source src="<?php echo wp_get_attachment_url(SCF::get( 'src_player_video' )); ?>" type="video/mp4" />
             </video>
         </div>
     </div>

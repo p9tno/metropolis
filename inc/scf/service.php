@@ -123,12 +123,9 @@ function template_service_fields($settings, $type, $id, $meta_type, $types)
                         'notes'       => 'yCChjRhpV64', // Текст под полем.
                     ),
                     array(
-                        'type'        => 'text', // Тип поля. Обязательный.
+                        'type'        => 'file', // Тип поля. Обязательный.
                         'name'        => 'src_player_hasvideo', // Ключ поля. Обязательный.
                         'label'       => 'Form link to video', // Заголовок поля.
-                        'default'     => '', // Значение по умолчанию.
-                        'instruction' => 'upload the file to media, copy the link to it and paste it into the field', // Текст над полем.
-                        'notes'       => 'Example: /wp-content/uploads/filename', // Текст под полем.
                     ),
                     array(
                         'type'        => 'text', // Тип поля. Обязательный.
