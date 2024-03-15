@@ -52,6 +52,7 @@
                 () => d[l](f, ...n)));
             })({
                 key: 'AIzaSyBVY9bdJtxFyjxthJGdsXG7G7A6jXPRFJg',
+                language: 'en',
                 // v: 'weekly',
                 // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
                 // Add other bootstrap parameters as needed, using camel case.
