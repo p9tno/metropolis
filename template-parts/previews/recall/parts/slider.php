@@ -4,7 +4,8 @@
 
 <?php $slider = SCF::get('recall__slider');
 
-// get_pr($slider[0]['recall_img']);
+// get_pr(count($slider));
+
 
 if ($slider[0]['recall_img']) { ?>
     <div class="recall__slider">
@@ -21,14 +22,15 @@ if ($slider[0]['recall_img']) { ?>
                         <div class="recall__img img"><?php echo $img_slide; ?></div>
                     </div>
                 <?php } ?>
-
             </div>
 
-            <div class="recall__control swiper-control dark">
-                <i class="swiper-arrow icon_arrow_left"></i>
-                <div class="swiper-pagination"></div>
-                <i class="swiper-arrow icon_arrow_right"></i>
-            </div>
+            <?php if (count($slider) > 1) { ?>
+                <div class="recall__control swiper-control dark">
+                    <i class="swiper-arrow icon_arrow_left"></i>
+                    <div class="swiper-pagination"></div>
+                    <i class="swiper-arrow icon_arrow_right"></i>
+                </div>
+            <?php } ?>
         </div>
     </div>
 <?php }; ?>

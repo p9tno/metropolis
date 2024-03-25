@@ -24,6 +24,7 @@ jQuery(function($){
             complete: function() {
                 uploadYoutubeVideo();
                 videoPlayer();
+                addRecallSliders();
             },
             success:function(data){
                 if (data) {
@@ -82,5 +83,47 @@ jQuery(function($){
 
         });
     }
+
+    function addRecallSliders() {
+        let recalls = $('.recall_js');
+
+        recalls.each(function() {
+            let options = $(this).data('options') || {};
+            let $parent = $(this).parent();
+            let swiperDefaults = {
+
+                slidesPerView: 1,
+                speed: 2000,
+                loop: true,
+
+                // autoplay: {
+                //   delay: 5000,
+                // },
+
+                allowTouchMove: false,
+                clickable: false,
+
+
+
+                pagination: {
+                    type: "fraction",
+                    el: $parent.find('.swiper-pagination')[0],
+                },
+
+                navigation: {
+                    nextEl: $parent.find('.icon_arrow_right')[0],
+                    prevEl: $parent.find('.icon_arrow_left')[0],
+                },
+
+
+            };
+
+            let swiperOptions = $.extend(swiperDefaults, options),
+            mySwiper = new Swiper(this, swiperOptions);
+
+        });
+
+    }
+    addRecallSliders();
 
 });
