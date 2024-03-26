@@ -105,6 +105,26 @@ function project_fields($settings, $type, $id, $meta_type, $types)
                     'radio_direction' => 'horizontal', // или vertical. Вариант отображения пунктов.
                     'default'         => 'no', // Значение по умолчанию.
                 ),
+                array(
+                    'type'        => 'image', // Тип поля. Обязательный.
+                    'name'        => 'gallery_item_second', // Ключ поля. Обязательный.
+                    'label'       => 'Gallery item second', // Заголовок поля.
+                    'size'        => 'thumbnail', // Размер изображения в метабоксе.
+                    'instruction' => '', // Текст над полем.
+                    'notes'       => '', // Текст под полем.
+                ),  
+                array(
+                    'type'            => 'radio', // Тип поля. Обязательный.
+                    'name'            => 'gallery_radio_second', // Ключ поля. Обязательный.
+                    'label'           => 'Before, after (second)', // Заголовок поля.
+                    'choices'         => array( // Массив с вариантами выбора.
+                        'no' => 'no',
+                        'before' => 'before',
+                        'after' => 'after',
+                    ),
+                    'radio_direction' => 'horizontal', // или vertical. Вариант отображения пунктов.
+                    'default'         => 'no', // Значение по умолчанию.
+                ),
 			)
 		);
 

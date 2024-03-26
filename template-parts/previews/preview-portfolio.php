@@ -104,6 +104,8 @@ if (isset($meta_thumb[2])) {
             $slideObject = new StdClass();
             $slideObject->radio = $slide['gallery_radio'];
             $slideObject->url = wp_get_attachment_url($slide['gallery_item']);
+            $slideObject->radio_second = $slide['gallery_radio_second'];
+            $slideObject->url_second = wp_get_attachment_url($slide['gallery_item_second']);
             $arr[] = $slideObject;
             $post_meta->slides = $arr;
         }

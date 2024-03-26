@@ -112,9 +112,9 @@ $(document).ready(function() {
           event.preventDefault();
           // let id  = $(this).attr('data-modal');
           let clickId  = $(this).attr('id');
-          console.log('clickId', clickId);
+        //   console.log('clickId', clickId);
     
-          console.log('modalData : ', modalData[clickId][0]);
+        //   console.log('modalData : ', modalData[clickId][0]);
     
           const id = modalData[clickId][0].id; 
           const cat = modalData[clickId][0].category;
@@ -130,7 +130,7 @@ $(document).ready(function() {
           initProjectSlider();
     
           $('#project').modal('show');
-          console.log(modalData);
+        //   console.log(modalData);
         });
       
         $('.modal').on('hide.bs.modal', () => {
@@ -139,47 +139,60 @@ $(document).ready(function() {
         });
       
         function setModalContent(cat, title, location, text, link, images, recall) {
-            console.log('setModalContent');
             let sliderDiv = '';
             if (images[0].url != false) {
-              let slides = '';
-              images.forEach((data) => {
-                  slides += `<div class="swiper-slide">
-                      <div class="project__img img ${data['radio']}">
-                          <img
-                              src="${data['url']}"
-                              alt="image"
-                              loading="lazy"
-                          />
-                      </div>
-                  </div>`;
-              });
+                let slides = '';
+
+                images.forEach((data) => {
+                    let slideClass = '';
+                    let imgSecond = '';
+                    if (data['url_second'] != false) {
+                        slideClass = 'project__slide_flex';
+                        imgSecond = `<div class="project__img img ${data['radio_second']}">
+                            <img
+                                src="${data['url_second']}"
+                                alt="image"
+                                loading="lazy"
+                            />
+                        </div>`;
+                    }
+
+                    let img = `<div class="project__img img ${data['radio']}">
+                        <img
+                            src="${data['url']}"
+                            alt="image"
+                            loading="lazy"
+                        />
+                    </div>`;
+
+                    slides += `<div class="swiper-slide ${slideClass}">${img}${imgSecond}</div>`;
+                });
       
-              let countSlides = images.length;
-              let control = '';
-              let fraction = '';
-              if(countSlides > 2) {
+                let countSlides = images.length;
+                let control = '';
+                let fraction = '';
+                if(countSlides > 2) {
                 control = `<div class="project__control swiper-control dark">
-                  <i class="swiper-arrow icon_arrow_left"></i>
-                  <div class="swiper-pagination"></div>
-                  <i class="swiper-arrow icon_arrow_right"></i>
+                    <i class="swiper-arrow icon_arrow_left"></i>
+                    <div class="swiper-pagination"></div>
+                    <i class="swiper-arrow icon_arrow_right"></i>
                 </div>`
-      
+        
                 fraction = `<div class="project__fraction desktop">
-                  <div class="fraction"><span class="fraction__current fraction_current_js">01</span>
+                    <div class="fraction"><span class="fraction__current fraction_current_js">01</span>
                     <div class="fraction__line"></div><span class="fraction__all fraction_all_js">03</span>
-                  </div>
+                    </div>
                 </div>`
-              }
-              sliderDiv = `<div class="project__slider">
+                }
+                sliderDiv = `<div class="project__slider">
                 ${fraction}
                 <div class="swiper project_js">
-                  <div class="swiper-wrapper">
-                      ${slides}
-                  </div>
-                  ${control}
+                    <div class="swiper-wrapper">
+                        ${slides}
+                    </div>
+                    ${control}
                 </div>
-              </div>`
+                </div>`
     
             }
     
