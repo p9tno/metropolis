@@ -418,16 +418,28 @@
             width: 50%;
             
             img {
-                border: 0.625em solid #EBE8E2;
-            }
-            &:first-child {
-                img {
-                    border-right: 0.3125em solid #EBE8E2;
+                border: 0.25em solid #EBE8E2;
+                @media (min-width: 768px) {
+                    border: 0.625em solid #EBE8E2;
                 }
             }
+
+            &:first-child {
+                img {
+                    border-right: 0.125em solid #EBE8E2;
+                    @media (min-width: 768px) {
+                        border-right: 0.3125em solid #EBE8E2;
+                    }
+                }
+            }
+
             &:last-child {
                 img {
-                    border-left: 0.3125em solid #EBE8E2;
+                    border-left: 0.125em solid #EBE8E2;
+                    @media (min-width: 768px) {
+                        border-left: 0.3125em solid #EBE8E2;
+                      
+                    }
                 }
                 
             }
