@@ -89,6 +89,22 @@ function global_theme_settings($settings, $type, $id, $meta_type, $types)
 					'notes'       => '', // Текст под полем.
 				),
 				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'houzz', // Ключ поля. Обязательный.
+					'label'       => 'houzz', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'nextdoor', // Ключ поля. Обязательный.
+					'label'       => 'nextdoor', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => '', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
 					'type'        => 'boolean', // Тип поля. Обязательный.
 					'name'        => 'boolean_preloader', // Ключ поля. Обязательный.
 					'label'       => 'Show preloader?', // Заголовок поля.

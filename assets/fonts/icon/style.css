@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icon';
-  src:  url('fonts/icon.eot?knu4sl');
-  src:  url('fonts/icon.eot?knu4sl#iefix') format('embedded-opentype'),
-    url('fonts/icon.ttf?knu4sl') format('truetype'),
-    url('fonts/icon.woff?knu4sl') format('woff'),
-    url('fonts/icon.svg?knu4sl#icon') format('svg');
+  src:  url('fonts/icon.eot?52atff');
+  src:  url('fonts/icon.eot?52atff#iefix') format('embedded-opentype'),
+    url('fonts/icon.ttf?52atff') format('truetype'),
+    url('fonts/icon.woff?52atff') format('woff'),
+    url('fonts/icon.svg?52atff#icon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -63,4 +63,10 @@
 }
 .icon_twitter:before {
   content: "\e91a";
+}
+.icon_houzz:before {
+  content: "\e90c";
+}
+.icon_nextdoor:before {
+  content: "\e90d";
 }

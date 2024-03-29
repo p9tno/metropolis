@@ -885,10 +885,12 @@ body {
   gap: 0.625em;
   border-top: 1px solid rgba(245, 243, 239, 0.2);
   margin: 0 -1.25em;
+  font-size: 0.675em;
 }
 @media (min-width: 768px) {
   .soc {
     margin: 0;
+    font-size: 1em;
     padding-top: 3.75em;
   }
 }
