@@ -3,7 +3,7 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
 {
     if ($type === 'testimonials' && get_page_template_slug($id) == '') {
 
-		$Section = SCF::add_setting('acf_testimonials_settings', '<span>Testimonials main settings. <span style="color:#517DC0;">Only 1 and every 9 elements can display content and video in one element. On the testimonials page</span></span>');
+		$Section = SCF::add_setting('acf_testimonials_settings', '<span>Testimonials main settings. <span style="color:#517DC0;">Only 1 and every 9 elements can display content and video in one element.</span></span>');
 
 		$Section->add_group(
 			'testimonials-settings',
@@ -90,7 +90,7 @@ function recall_fields($settings, $type, $id, $meta_type, $types)
 	}
 	if ($type === 'testimonials' && get_page_template_slug($id) == '') {
 
-		$Section = SCF::add_setting('acf_testimonials_gallery', '<span>Testimonials gallery. Will appear in all elements, <span style="color:#517DC0;">except 1 and every 9.</span></span> ');
+		$Section = SCF::add_setting('acf_testimonials_gallery', '<span>Testimonials gallery.</span> ');
 
         $Section->add_group(
 			'recall__slider',

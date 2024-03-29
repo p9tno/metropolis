@@ -124,6 +124,5 @@ jQuery(function($){
         });
 
     }
-    addRecallSliders();
 
 });
