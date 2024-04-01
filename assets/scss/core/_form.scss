@@ -71,49 +71,216 @@
 
 	}
 
+	// Input text and textarea ================================================
+	input:not([type]),
+	input[type=date],
+	input[type=email],
+	input[type=number],
+	input[type=password],
+	input[type=search],
+	input[type=tel],
+	input[type=text],
+	input[type=url],
+	textarea {
+	
+		background-color: transparent;
+		border: 0;
+	
+		border-bottom: 1px solid;
+		border-color: #948D7C;
+		border-radius: 0;
+	
+		font-family: $main_font_family;
+		color: $second_color;
+	
+		padding: 0.6em 0;
+		outline: none;
+		font-weight: 300;
+		transition: 0.3s;
+	
+		font-size: 0.875em;
+	
+		@media (min-width: 768px) {
+			font-size: 1em;
+		}
+	
+		&:hover {}
+	
+		&:focus {}
+	
+		&.invalid {}
+	
+		// Placeholder for input +++++++++++++++
+		@include placeholder {
+			color: #524D43;
+		}
+	}
 }
-// Input text and textarea ================================================
-input:not([type]),
-input[type=date],
-input[type=email],
-input[type=number],
-input[type=password],
-input[type=search],
-input[type=tel],
-input[type=text],
-input[type=url],
-textarea {
 
-	background-color: transparent;
-	border: 0;
 
-	border-bottom: 1px solid;
-	border-color: #948D7C;
-	border-radius: 0;
 
-	font-family: $main_font_family;
-	color: $second_color;
+div.wpforms-container.form {
+	margin: 0;
 
-	padding: 0.6em 0;
-	outline: none;
-	font-weight: 300;
-	transition: 0.3s;
+	.wpforms-field-container {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -1em;
 
-	font-size: 0.875em;
+		.form__row {
+			margin: 0 1em 1.25em;
+			width: 100%;
+			padding: 0;
 
-	@media (min-width: 768px) {
-		font-size: 1em;
+			@media (min-width: 768px) {
+				margin: 0 1em 1.5em;
+			}
+
+			@media (min-width: 768px) {
+				width: calc(50% - 2em);
+			}
+
+			&_full {
+				width: 100%;
+			}
+
+			input:not([type]),
+			input[type=date],
+			input[type=email],
+			input[type=number],
+			input[type=password],
+			input[type=search],
+			input[type=tel],
+			input[type=text],
+			input[type=url],
+			textarea {
+				background-color: transparent;
+				border: 0;
+				border-radius: 0;
+				border-bottom: 1px solid #948D7C;
+				font-family: $main_font_family;
+				color: $second_color;
+
+				padding: 0.6em 0 0.5em;
+				outline: none!important;
+				box-shadow: none!important;
+				height: auto;
+				line-height: 1.35;
+				font-weight: 300;
+				transition: 0.3s;
+			
+				font-size: 0.875em;
+				@media (min-width: 768px) {
+					font-size: 1em;
+				}
+			
+				&:hover {
+					outline: none;
+					border: 0;
+					border-bottom: 1px solid #948D7C;
+				}
+			
+				&:focus {
+					outline: none;
+					border: 0;
+					border-bottom: 1px solid #948D7C;
+				}
+			
+				&.invalid {}
+			
+				// Placeholder for input +++++++++++++++
+				@include placeholder {
+					color: #524D43;
+				}
+
+
+			}
+
+			&.wpforms-has-error {
+				input:not([type]),
+				input[type=date],
+				input[type=email],
+				input[type=number],
+				input[type=password],
+				input[type=search],
+				input[type=tel],
+				input[type=text],
+				input[type=url],
+				textarea {
+					@include placeholder {
+						color: #d63637;
+					}
+				}
+			}
+		}
+
+		em {
+			&.wpforms-error {
+				position: absolute;
+				bottom: -1.75em;
+				left: 0;
+				font-size: 0.75em;
+			
+			}
+		}
+
 	}
 
-	&:hover {}
+	.wpforms-submit-container {
+		.btn {
+			position: relative;
 
-	&:focus {}
+			display: inline-flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1em;
+		
+			padding: 0;
+			border-radius: 0;
+			border: none;
+			outline: none;
+			width: 100%;
+		
+			font-family: $main_font_family;
+			font-size: 1em;
+			font-weight: 600;
+			text-decoration: none;
+			text-align: left;
+			line-height: 1.3;
+			text-transform: uppercase;
+		
+			color: $second_color!important;
+			background: transparent!important;
+			height: auto;
+			box-shadow: none;
+		
+			cursor: pointer;
+			transition: 0.3s;
 
-	&.invalid {}
+			@media (min-width: 768px) {
+				font-size: 1.25em;
+			}
 
-	// Placeholder for input +++++++++++++++
-	@include placeholder {
-		color: #524D43;
+			&:after {
+				content: '\e900';
+				font-family: 'icon';
+				font-size: 0.8em;
+				border: 0;
+				position: static;
+			}
+
+			&:before {
+				font-size: 0.8em;
+			}
+
+			
+			
+			
+		}
+
+		.wpforms-submit-spinner {
+			display: none!important;
+		}
 	}
 }
 

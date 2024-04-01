@@ -20,6 +20,7 @@
         <?php if (SCF::get( 'contacts__form' )) { ?>
             <div class="contact__content">
                 <div class="contact__form">
+                    <div class="contact__label">Contact Form:</div>
                     <?php echo do_shortcode(  SCF::get( 'contacts__form' ) ); ?>
                     <!-- <div class="contact__label">Contact Form:</div>
                     <div class="form form_grid">
@@ -49,6 +50,6 @@
                 <div class="contact__img img"><?php echo $img; ?></div>  
             </div>
         <?php } ?>
-    </div>
+
 </section>
 <!-- end contact-->
