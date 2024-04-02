@@ -3879,10 +3879,15 @@ div.wpforms-container.form .wpforms-field-container .form__row.wpforms-has-error
   color: #d63637;
 }
 div.wpforms-container.form .wpforms-field-container em.wpforms-error {
-  position: absolute;
-  bottom: -1.75em;
-  left: 0;
-  font-size: 0.75em;
+  font-size: 0.675em;
+}
+@media (min-width: 768px) {
+  div.wpforms-container.form .wpforms-field-container em.wpforms-error {
+    position: absolute;
+    bottom: -1.75em;
+    left: 0;
+    font-size: 0.75em;
+  }
 }
 div.wpforms-container.form .wpforms-submit-container .btn {
   position: relative;
@@ -3926,6 +3931,22 @@ div.wpforms-container.form .wpforms-submit-container .btn:before {
 }
 div.wpforms-container.form .wpforms-submit-container .wpforms-submit-spinner {
   display: none !important;
+}
+div.wpforms-container.form .wpforms-confirmation-container-full {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+div.wpforms-container.form .wpforms-confirmation-container-full p {
+  font-weight: 400;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+@media (min-width: 768px) {
+  div.wpforms-container.form .wpforms-confirmation-container-full p {
+    font-size: 2.375em;
+  }
 }
 
 input[type=search]::-webkit-search-cancel-button,
