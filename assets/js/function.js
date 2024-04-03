@@ -296,73 +296,73 @@ $(document).ready(function() {
 
     videoPlayerModal();
 
-    function initPreviewSliders() {
-        const speed = 2000;
-        const lg = new Swiper(".preview_lg_js", {
-            slidesPerView: 1,
-            allowTouchMove: false,
-            clickable: false,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-              },
-            speed: speed,
-        });
+    // function initPreviewSliders() {
+    //     const speed = 2000;
+    //     const lg = new Swiper(".preview_lg_js", {
+    //         slidesPerView: 1,
+    //         allowTouchMove: false,
+    //         clickable: false,
+    //         loop: true,
+    //         autoplay: {
+    //             delay: 5000,
+    //           },
+    //         speed: speed,
+    //     });
 
-        const sm = new Swiper(".preview_sm_js", {
-            slidesPerView: 1,
-            allowTouchMove: false,
-            clickable: false,
-            loop: true,
-            speed: speed,
-            autoplay: {
-                delay: 5000,
-              },
-            thumbs: {
-                swiper: lg,
-            },
-        });
+    //     const sm = new Swiper(".preview_sm_js", {
+    //         slidesPerView: 1,
+    //         allowTouchMove: false,
+    //         clickable: false,
+    //         loop: true,
+    //         speed: speed,
+    //         autoplay: {
+    //             delay: 5000,
+    //           },
+    //         thumbs: {
+    //             swiper: lg,
+    //         },
+    //     });
 
-        const info = new Swiper(".preview_info_js", {
-            slidesPerView: 1,
-            allowTouchMove: false,
-            clickable: false,
-            loop: true,
-            speed: speed,
+    //     const info = new Swiper(".preview_info_js", {
+    //         slidesPerView: 1,
+    //         allowTouchMove: false,
+    //         clickable: false,
+    //         loop: true,
+    //         speed: speed,
 
-            autoplay: {
-              delay: 5000,
-            },
+    //         autoplay: {
+    //           delay: 5000,
+    //         },
 
-            effect: "fade",
-            fadeEffect: {
-              crossFade: true
-            },
+    //         effect: "fade",
+    //         fadeEffect: {
+    //           crossFade: true
+    //         },
 
-            autoHeight: true,
+    //         autoHeight: true,
 
-            navigation: {
-                nextEl: '.preview__control .icon_arrow_right',
-                prevEl: '.preview__control .icon_arrow_left',
-            },
+    //         navigation: {
+    //             nextEl: '.preview__control .icon_arrow_right',
+    //             prevEl: '.preview__control .icon_arrow_left',
+    //         },
 
-            breakpoints: {
-                768: {
-                    autoHeight: false,
-                },
+    //         breakpoints: {
+    //             768: {
+    //                 autoHeight: false,
+    //             },
 
-            },
+    //         },
 
-            pagination: {
-                el: ".preview__control .swiper-pagination",
-                type: "fraction",
-            },
+    //         pagination: {
+    //             el: ".preview__control .swiper-pagination",
+    //             type: "fraction",
+    //         },
 
-            thumbs: {
-                swiper: sm,
-            },
-        });
-    }
+    //         thumbs: {
+    //             swiper: sm,
+    //         },
+    //     });
+    // }
     // initPreviewSliders();
 
     function changeSliders () {
@@ -469,9 +469,9 @@ $(document).ready(function() {
                     clickable: false,
                     loop: true,
                     speed: speed,
-                    // autoplay: {
-                    //   delay: 5000,
-                    // },
+                    autoplay: {
+                      delay: 5000,
+                    },
                     
                     autoHeight: true,
                     navigation: {
