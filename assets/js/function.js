@@ -365,6 +365,114 @@ $(document).ready(function() {
     }
     initPreviewSliders();
 
+    function changeSliders () {
+        let preview_lg = null;
+        let preview_sm = null;
+        let preview_info = null;
+        let preview_mobile = null;
+        let mediaQuerySize = 767;
+        const speed = 2000;
+
+        function initDesktopSliders () {
+            if (!preview_lg) {
+                preview_lg = new Swiper(".preview_lg_js", {
+                    slidesPerView: 1,
+                    allowTouchMove: false,
+                    clickable: false,
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                      },
+                    speed: speed,
+                });
+            }
+            if (!preview_sm) {
+                preview_sm = new Swiper(".preview_sm_js", {
+                    slidesPerView: 1,
+                    allowTouchMove: false,
+                    clickable: false,
+                    loop: true,
+                    speed: speed,
+                    autoplay: {
+                        delay: 5000,
+                      },
+                    thumbs: {
+                        swiper: preview_lg,
+                    },
+                });
+            }
+            if (!preview_info) {
+                preview_info = new Swiper(".preview_info_js", {
+                    slidesPerView: 1,
+                    allowTouchMove: false,
+                    clickable: false,
+                    loop: true,
+                    speed: speed,
+        
+                    autoplay: {
+                      delay: 5000,
+                    },
+        
+                    effect: "fade",
+                    fadeEffect: {
+                      crossFade: true
+                    },
+        
+                    autoHeight: true,
+        
+                    navigation: {
+                        nextEl: '.preview__control .icon_arrow_right',
+                        prevEl: '.preview__control .icon_arrow_left',
+                    },
+        
+                    breakpoints: {
+                        768: {
+                            autoHeight: false,
+                        },
+        
+                    },
+        
+                    pagination: {
+                        el: ".preview__control .swiper-pagination",
+                        type: "fraction",
+                    },
+        
+                    thumbs: {
+                        swiper: preview_sm,
+                    },
+                });
+            }
+        }
+
+        function destroyDesktopSlider () {
+            if (preview_lg) {
+                preview_lg.destroy();
+                preview_lg = null;
+            }
+            if (preview_sm) {
+                preview_sm.destroy();
+                preview_sm = null;
+            }
+            if (preview_info) {
+                preview_info.destroy();
+                preview_info = null;
+            }
+         
+        }
+
+        $(window).on('load resize', function () {
+            let windowWidth = $(this).innerWidth();
+            if (windowWidth <= mediaQuerySize) {
+                destroyDesktopSlider();
+                console.log('destroy desctop');
+            } else {
+                initDesktopSliders();
+                console.log('init desctop');
+            }
+        });
+    }
+    // changeSliders();
+
     function initSingleServiceSlider() {
         const info = new Swiper(".testimonials_js", {
             slidesPerView: 1,

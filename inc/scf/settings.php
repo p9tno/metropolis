@@ -20,6 +20,19 @@ function global_theme_settings($settings, $type, $id, $meta_type, $types)
 					'size'        => 'medium', // Размер изображения в метабоксе.
 				),
 				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'header_link_title', // Ключ поля. Обязательный.
+					'label'       => 'Header link title', // Заголовок поля.
+					'default'     => '', // Значение по умолчанию.
+					'instruction' => 'Displayed only in the mobile version on the main page', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
+				array(
+					'type'        => 'text', // Тип поля. Обязательный.
+					'name'        => 'header_link_href', // Ключ поля. Обязательный.
+					'label'       => 'Header link href', // Заголовок поля.
+				),
+				array(
 					'type'        => 'image', // Тип поля. Обязательный.
 					'name'        => 'option_footer_img', // Ключ поля. Обязательный.
 					'label'       => 'Logo footer', // Заголовок поля.

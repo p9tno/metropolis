@@ -22,13 +22,12 @@
                     <a href="mailto:<?php echo SCF::get_option_meta('my-theme-settings', 'option_email'); ?>"><?php echo SCF::get_option_meta('my-theme-settings', 'option_email'); ?></a>
                 <?php } ?>
             </div>
+            
             <div class="header__toggle"><i></i><span class="desktop">MENU</span></div>
         </div>
     </div>
 
-    <!-- start content home page -->
-    <a class="header__link mobile" href="#">Request Consultation</a>
-    <!-- end content home page -->
+    <?php get_template_part( 'template-parts/parts/part', 'link' ); ?>
 
     <div class="header__nav">
         <div class="container_center">
