@@ -4,6 +4,10 @@ $animation-duration: 2s;
     padding-top: 7em;
     padding-bottom: 0;
 
+    @media (max-width: 767px) {
+      overflow: hidden;
+    }
+
     @media (min-width: 768px) {
         padding-top: 0;
         padding-bottom: 0;
@@ -239,19 +243,73 @@ $animation-duration: 2s;
         margin-top: 1.375em;
     }
 
+    @media (max-width: 767px) {
+        &__mobile {
+            margin-top: 1.75em;
+            width: 35.5em;
+
+            &_top {
+                width: 13.25em;
+            }
+
+
+            &_control {
+                position: absolute;
+                top: 1.15em;
+                right: 50.4%;
+                z-index: 1;
+                
+                
+            }
+
+           
+            
+            .swiper-control {
+                width: 4.5em;
+            }
+
+
+
+            .preview__img {
+                margin-top: 1em;
+                width: 100%;
+                height: 13.125em;
+            }
+
+            .preview__title {
+                font-size: 0.875em;
+            }
+
+            .preview__label {
+                font-size: 0.625em;
+            }
+
+            .preview__text {
+                &:after {
+                    content: '\e900';
+                    font-family: 'icon';
+                    display: block;
+                    font-size: 1.25em;
+                    margin-top: 1em;
+                }
+            }
+
+        }
+    }
+
 }
 
-// @keyframes fadeInUp {
-//     from {
-//         opacity: 0;
-//         transform: translate3d(0, 150%, 0);
-//     }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 150%, 0);
+    }
 
-//     to {
-//         opacity: 1;
-//         transform: translate3d(0, 0, 0);
-//     }
-// }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
 
 @keyframes zoomOut {
     from {

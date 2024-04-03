@@ -47,22 +47,25 @@
 		.btn {
 			margin-top: 0.8em;
 		}
-
-		&.tick {
-			position: relative;
-
-			&:after {
-				position: absolute;
-				bottom: 0.178em;
-				right: -0.4em;
-				content: '';
-				display: block;
-				width: 0.5em;
-				height: 1px;
-
-				background-color: #948D7C;
-				transform: rotate(-45deg);
+		@media (min-width: 768px) {
+			
+			&.tick {
+				position: relative;
+	
+				&:after {
+					position: absolute;
+					bottom: 0.178em;
+					right: -0.4em;
+					content: '';
+					display: block;
+					width: 0.5em;
+					height: 1px;
+	
+					background-color: #948D7C;
+					transform: rotate(-45deg);
+				}
 			}
+		  
 		}
 
 		p {

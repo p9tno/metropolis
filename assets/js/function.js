@@ -363,7 +363,7 @@ $(document).ready(function() {
             },
         });
     }
-    initPreviewSliders();
+    // initPreviewSliders();
 
     function changeSliders () {
         let preview_lg = null;
@@ -460,18 +460,51 @@ $(document).ready(function() {
          
         }
 
+        function initMobileSlider () {
+            if (!preview_mobile) {
+                preview_mobile = new Swiper(".preview_mobile_js", {
+                    slidesPerView: 2,
+                    spaceBetween: 8,
+                    allowTouchMove: false,
+                    clickable: false,
+                    loop: true,
+                    speed: speed,
+                    // autoplay: {
+                    //   delay: 5000,
+                    // },
+                    
+                    autoHeight: true,
+                    navigation: {
+                        nextEl: '.preview__mobile_control .icon_arrow_right',
+                        prevEl: '.preview__mobile_control .icon_arrow_left',
+                    },
+                    pagination: {
+                        el: ".preview__mobile_control .swiper-pagination",
+                        type: "fraction",
+                    },
+                });
+            }
+        }
+
+        function destroyMobileSlider () {
+            if (preview_mobile) {
+                preview_mobile.destroy();
+                preview_mobile = null;
+            }
+        }
+
         $(window).on('load resize', function () {
             let windowWidth = $(this).innerWidth();
             if (windowWidth <= mediaQuerySize) {
                 destroyDesktopSlider();
-                console.log('destroy desctop');
+                initMobileSlider();
             } else {
                 initDesktopSliders();
-                console.log('init desctop');
+                destroyMobileSlider();
             }
         });
     }
-    // changeSliders();
+    changeSliders();
 
     function initSingleServiceSlider() {
         const info = new Swiper(".testimonials_js", {

@@ -18,7 +18,42 @@
 
                 <?php $row = SCF::get('preview_sliders');
                 if ($row) { ?>
-                    <div class="preview__sliders" id="sliders">
+                    <div class="preview__mobile mobile">
+                        <div class="swiper preview_mobile_js">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($row as $col) {  
+                                        $img = false;
+                                        if ($col['preview__lg']) {
+                                            $img = wp_get_attachment_image($col['preview__lg'], 'full');
+                                        } else {
+                                            $img = $no_img;
+                                        }
+                                    ?>
+                                    <div class="swiper-slide">
+                                        <div class="preview__mobile_top">
+                                            <?php if ($col['preview__label']) { ?>
+                                                <div class="preview__label"><?php echo $col['preview__label']; ?></div>
+                                            <?php } ?>
+                                            <?php if ($col['preview__title']) { ?>
+                                                <div class="preview__title"><?php echo $col['preview__title']; ?></div>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="preview__img img"><?php echo $img; ?></div>
+                                        <?php if ($col['preview__text']) { ?>
+                                            <div class="preview__text"><?php echo $col['preview__text']; ?></div>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class="preview__mobile_control swiper-control">
+                                <i class="swiper-arrow icon_arrow_left"></i>
+                                <div class="swiper-pagination"></div>
+                                <i class="swiper-arrow icon_arrow_right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview__sliders desktop" id="sliders">
     
                         <div class="preview__imgs">
     
