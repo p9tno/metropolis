@@ -8,7 +8,7 @@
             <?php } ?>
             <?php if (SCF::get( 'consult__link' )) { ?>
               <div class="consult__btn">
-                <a class="btn" href="<?php echo SCF::get( 'consult__link' ); ?>"><span>to get consultation</span></a>
+                <a class="btn" href="<?php echo SCF::get( 'consult__link' ); ?>"><span>get consultation</span></a>
               </div>
             <?php } ?>
           </div>
