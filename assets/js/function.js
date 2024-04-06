@@ -571,4 +571,8 @@ $(document).ready(function() {
     }
     addRecallSliders();
 
+    $('form.wpforms-form').on('wpformsAjaxSubmitSuccess', (event) => {
+        $('.contact__label').addClass('d-none');
+    })
+
 })
