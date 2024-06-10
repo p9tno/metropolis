@@ -31,16 +31,24 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             map.setCenter({ lat: mapMarkers[0].position.lat, lng: mapMarkers[0].position.lng });
         }
+        // console.log(mapMarkers);
 
-        mapMarkers.forEach(({ title, position, place, text, link, images, icon }, i) => {
+        mapMarkers.forEach(({ title, position, place, text, link, images, icon, scaledSize }, i) => {
             const addMarker = () => {
+                const iconSet = {
+                    url: icon, // url
+                    scaledSize: new google.maps.Size(scaledSize, scaledSize), // scaled size
+                    origin: new google.maps.Point(0,0), // origin
+                    anchor: new google.maps.Point(0, 0) // anchor
+                }
                 const marker = new google.maps.Marker({
-                    icon: icon,
+                    icon: iconSet,
                     position,
                     // animation: google.maps.Animation.DROP,
                     map,
                     title,
                     optimized: false,
+                    scale: 0.1,
                 });
 
                 marker.addListener('click', (e) => {

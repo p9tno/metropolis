@@ -11,7 +11,7 @@
 
     display: flex;
     align-items: center;
-    gap: 0.375em;
+    gap: 0.125em;
 
     @media (min-width: 768px) {
         position: absolute;
@@ -21,6 +21,14 @@
     }
 
     > * {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 2em;
+        height: 2em;
+
         color: #938B7C;
         background-color: transparent;
         text-decoration: none;
@@ -30,10 +38,11 @@
         transition: 0.3s;
         line-height: 1.5;
 
-        font-size: 0.875em;
-
-        &.dots {
-            border: 0;
+        font-size: 0.75em;
+        
+        @media (min-width: 768px) {
+            font-size: 1.25em;
+          
         }
 
         &.next,
@@ -42,20 +51,21 @@
         }
 
         &.dots {
-            color: $main_color;
+            border: 0;
+            color: #938B7C;
             background-color: transparent;
             cursor: default;
         }
 
-        &:hover {
-            color: $second_color;
-
-            &.dots {}
+        &:hover:not(.dots) {
+            color: $color_light_primary;
+            background-color: $second_color;
         }
 
         &.current {
-            color: $second_color;;
             cursor: default;
+            color: $color_light_primary;
+            background-color: $second_color;
         }
     }
 

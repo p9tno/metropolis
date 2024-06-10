@@ -15,7 +15,7 @@
                     <?php } ?>
                 </div>
 
-                <div class="footer__col">
+                <div class="footer__col navbar">
                     <nav class="footer__navbar">
                         <?php 
                             wp_nav_menu(array(
@@ -57,11 +57,14 @@
                     </div>
                 <?php } ?>
             </div>
-
-            <?php get_template_part( 'template-parts/parts/part', 'soc' ); ?>
-
-            <div class="footer__to"><a class="scroll_js" href="#wrapper">Back to the Top ↑</a></div>
-
+            <div class="footer__bottom">
+                <?php if (SCF::get_option_meta('my-theme-settings', 'policy' )) { 
+                    $url = get_permalink(array_shift(SCF::get_option_meta('my-theme-settings', 'policy' ))); ?>
+                    <div class="footer__link"><a href="<?php echo $url; ?>" target="_blank">Privacy Policy</a></div>
+                <?php } ?>
+                <?php get_template_part( 'template-parts/parts/part', 'soc' ); ?>
+                <div class="footer__link"><a class="scroll_js" href="#wrapper">Back to the Top ↑</a></div>
+            </div>
         </div>
     </div>
 

@@ -127,6 +127,34 @@ function global_theme_settings($settings, $type, $id, $meta_type, $types)
 					'true_label'  => 'Yes', // Текст радио-кнопки (true)
 					'false_label' => 'No', // Текст радио-кнопки (false)
 				),
+				array(
+					'type'            => 'select', // Тип поля. Обязательный.
+					'name'            => 'icon_size', // Ключ поля. Обязательный.
+					'label'           => 'Card icon size', // Заголовок поля.
+					'choices'         => array( // Массив с вариантами выбора.
+						'10' => '10',
+						'20' => '20',
+						'30' => '30',
+						'40' => '40',
+						'50' => '50',
+						'60' => '60',
+						'70' => '70',
+						'80' => '80',
+						'90' => '90',
+						'100' => '100',	
+					),
+					'default'         => '50', // Значение по умолчанию.
+					'instruction'     => 'select icon size', // Текст над полем.
+				),
+				array(
+					'type'        => 'relation', // Тип поля. Обязательный.
+					'name'        => 'policy', // Ключ поля. Обязательный.
+					'label'       => 'Privacy Policy', // Заголовок поля.
+					'post-type'   => array('page'), // Типы записей.
+					'limit'       => 1, // Максимальное количество выбираемых элементов.
+					'instruction' => 'Select page', // Текст над полем.
+					'notes'       => '', // Текст под полем.
+				),
 			)
 		);
 

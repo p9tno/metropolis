@@ -1,18 +1,15 @@
 .soc {
-    padding-top: 1.75em;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.625em;
-
-    border-top: 1px solid rgba(245, 243, 239, 0.2);
 
     margin: 0 -1.25em;
     font-size: 0.675em;
     @media (min-width: 768px) {
         margin: 0;
         font-size: 1em;
-        padding-top: 3.75em;
+        
     }
 
     &__link {

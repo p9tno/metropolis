@@ -15,6 +15,7 @@
                 </div>
             </div>
         </div>
+        <div class="construction__label">Locations of our latest job sites</div>
 
         <script>
             ((g) => {
@@ -69,6 +70,7 @@
 
                     $post_ID = $project->ID;
                     $metas = get_post_meta($post_ID);
+                    $global_icon_size = 50;
 
                     if($metas['project__boolean'][0]) {
                         $category = get_the_terms($post_ID, 'project-cat');
@@ -97,6 +99,12 @@
                             $post_meta->icon = wp_get_attachment_url($metas['project__marker'][0]);
                         } else {
                             $post_meta->icon = get_template_directory_uri() . '/assets/img/marker.svg';
+                        }
+
+                        if (SCF::get_option_meta('my-theme-settings', 'icon_size')) {
+                            $post_meta->scaledSize = (int)SCF::get_option_meta('my-theme-settings', 'icon_size');
+                        } else {
+                            $post_meta->scaledSize = $global_icon_size;
                         }
     
                         $gallery_item = [];

@@ -319,6 +319,66 @@ function template_service_fields($settings, $type, $id, $meta_type, $types)
     if ( $type === 'page' ) {
 		if ( get_page_template_slug( $id ) == PAGE_TEMPL_SERVICE ) {
 
+			$Setting = SCF::add_setting( 'asf_service_awards', 'Awards' );
+			$Setting->add_group(
+				'service_awards',
+				false,
+                array (
+                    array(
+                        'type'        => 'boolean', // Тип поля. Обязательный.
+                        'name'        => 'boolean_awards', // Ключ поля. Обязательный.
+                        'label'       => 'Display block?', // Заголовок поля.
+                        'default'     => 'false', // Значение по умолчанию.
+                        'true_label'  => 'Yes', // Текст радио-кнопки (true)
+                        'false_label' => 'No', // Текст радио-кнопки (false)
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'awards__title', // Ключ поля. Обязательный.
+                        'label'       => 'Title', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),                   
+				) 
+			);
+			$settings[] = $Setting;
+		}
+	}
+
+    if ( $type === 'page' ) {
+		if ( get_page_template_slug( $id ) == PAGE_TEMPL_SERVICE ) {
+
+            $Setting = SCF::add_setting( 'asf_service_awards_list', 'Awards images' );
+			$Setting->add_group(
+				'awards_images_settings',
+				true,
+				array (
+                    array(
+                        'type'        => 'image', // Тип поля. Обязательный.
+                        'name'        => 'awards__img', // Ключ поля. Обязательный.
+                        'label'       => 'Logo', // Заголовок поля.
+                        'size'        => 'full', // Размер изображения в метабоксе.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'image', // Тип поля. Обязательный.
+                        'name'        => 'awards__foto', // Ключ поля. Обязательный.
+                        'label'       => 'Img', // Заголовок поля.
+                        'size'        => 'thumbnail', // Размер изображения в метабоксе.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),
+				) 
+			);
+			$settings[] = $Setting;
+		}
+	}
+
+    if ( $type === 'page' ) {
+		if ( get_page_template_slug( $id ) == PAGE_TEMPL_SERVICE ) {
+
 			$Setting = SCF::add_setting( 'asf_service_testimonials', 'Client reviews' );
 			$Setting->add_group(
 				'service_testimonials',

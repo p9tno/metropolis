@@ -253,7 +253,7 @@ $(document).ready(function() {
     function videoPlayer() {
         $('.player__play').on('click', function (e) {
             e.preventDefault();
-            // console.log('player__play function js');
+            console.log('player__play function js');
             let videoContainer = $(this).closest('.player');
             let video = videoContainer.find('video')[0];
             if (video.paused) {
@@ -295,75 +295,6 @@ $(document).ready(function() {
     }
 
     videoPlayerModal();
-
-    // function initPreviewSliders() {
-    //     const speed = 2000;
-    //     const lg = new Swiper(".preview_lg_js", {
-    //         slidesPerView: 1,
-    //         allowTouchMove: false,
-    //         clickable: false,
-    //         loop: true,
-    //         autoplay: {
-    //             delay: 5000,
-    //           },
-    //         speed: speed,
-    //     });
-
-    //     const sm = new Swiper(".preview_sm_js", {
-    //         slidesPerView: 1,
-    //         allowTouchMove: false,
-    //         clickable: false,
-    //         loop: true,
-    //         speed: speed,
-    //         autoplay: {
-    //             delay: 5000,
-    //           },
-    //         thumbs: {
-    //             swiper: lg,
-    //         },
-    //     });
-
-    //     const info = new Swiper(".preview_info_js", {
-    //         slidesPerView: 1,
-    //         allowTouchMove: false,
-    //         clickable: false,
-    //         loop: true,
-    //         speed: speed,
-
-    //         autoplay: {
-    //           delay: 5000,
-    //         },
-
-    //         effect: "fade",
-    //         fadeEffect: {
-    //           crossFade: true
-    //         },
-
-    //         autoHeight: true,
-
-    //         navigation: {
-    //             nextEl: '.preview__control .icon_arrow_right',
-    //             prevEl: '.preview__control .icon_arrow_left',
-    //         },
-
-    //         breakpoints: {
-    //             768: {
-    //                 autoHeight: false,
-    //             },
-
-    //         },
-
-    //         pagination: {
-    //             el: ".preview__control .swiper-pagination",
-    //             type: "fraction",
-    //         },
-
-    //         thumbs: {
-    //             swiper: sm,
-    //         },
-    //     });
-    // }
-    // initPreviewSliders();
 
     function changeSliders () {
         let preview_lg = null;
@@ -511,14 +442,14 @@ $(document).ready(function() {
             slidesPerView: 1,
             allowTouchMove: false,
             clickable: false,
-            loop: true,
+            // loop: true,
             speed: 2000,
 
             autoHeight: true,
 
-            // autoplay: {
-            //   delay: 5000,
-            // },
+            autoplay: {
+              delay: 5000,
+            },
 
 
             navigation: {
