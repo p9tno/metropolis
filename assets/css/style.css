@@ -646,6 +646,9 @@ body {
 .section__content p:last-child {
   margin-bottom: 0;
 }
+.section__content a {
+  color: inherit;
+}
 .section__content h1, .section__content h2, .section__content h3, .section__content h4, .section__content h5, .section__content h6 {
   margin: 0.625em 0;
   font-family: "Brandon Grotesque";
@@ -3388,11 +3391,15 @@ body {
 
 .awards .section__title {
   color: #F5F3EF;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .awards .section__title {
     font-size: 2.375em;
   }
+}
+.awards .section__content {
+  text-align: center;
 }
 .awards__wrap {
   background-color: #292929;
@@ -3415,11 +3422,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
   }
 }
 @media (min-width: 768px) {
   .awards__list {
     width: 62.5em;
+    flex: none;
   }
 }
 .awards__item {
@@ -3466,6 +3475,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 1em;
+  text-decoration: none;
 }
 
 @media (max-width: 767px) {

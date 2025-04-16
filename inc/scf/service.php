@@ -339,7 +339,15 @@ function template_service_fields($settings, $type, $id, $meta_type, $types)
                         'default'     => '', // Значение по умолчанию.
                         'instruction' => '', // Текст над полем.
                         'notes'       => '', // Текст под полем.
-                    ),                   
+                    ),
+                    array(
+                        'type'        => 'wysiwyg', // Тип поля. Обязательный.
+                        'name'        => 'awards__text', // Ключ поля. Обязательный.
+                        'label'       => 'Content', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),            
 				) 
 			);
 			$settings[] = $Setting;
@@ -358,7 +366,15 @@ function template_service_fields($settings, $type, $id, $meta_type, $types)
                         'type'        => 'image', // Тип поля. Обязательный.
                         'name'        => 'awards__img', // Ключ поля. Обязательный.
                         'label'       => 'Logo', // Заголовок поля.
-                        'size'        => 'full', // Размер изображения в метабоксе.
+                        'size'        => 'thumbnail', // Размер изображения в метабоксе.
+                        'instruction' => '', // Текст над полем.
+                        'notes'       => '', // Текст под полем.
+                    ),
+                    array(
+                        'type'        => 'text', // Тип поля. Обязательный.
+                        'name'        => 'awards__img_link', // Ключ поля. Обязательный.
+                        'label'       => 'Logo link', // Заголовок поля.
+                        'default'     => '', // Значение по умолчанию.
                         'instruction' => '', // Текст над полем.
                         'notes'       => '', // Текст под полем.
                     ),
